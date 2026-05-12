@@ -439,6 +439,56 @@
       .btn-hero, .btn-ghost { justify-content: center; }
       .h-contact { display: none; }
     }
+
+    /* ── ADD-ON: MOBILE HERO TEXT OBEN, BUTTON UNTEN ────────────── */
+    @media(max-width:700px){
+      .hero {
+        min-height: 100svh;
+        height: 100svh;
+        max-height: none;
+        align-items: stretch;
+      }
+
+      .hero-content {
+        height: 100%;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 118px;
+        padding-bottom: 78px;
+      }
+
+      .hero-label {
+        margin-bottom: 14px;
+      }
+
+      .hero-h1 {
+        margin-bottom: 0;
+        max-width: 96%;
+      }
+
+      .hero-sub {
+        margin-top: 18px;
+        margin-bottom: 0;
+      }
+
+      .hero-btns {
+        margin-top: auto;
+        width: 100%;
+      }
+
+      .hero-btns .btn-ghost,
+      .hero-btns .btn-hero {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-scroll {
+        display: none;
+      }
+    }
+
   </style>
 </head>
 <body>
