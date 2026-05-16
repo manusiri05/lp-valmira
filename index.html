@@ -32,6 +32,9 @@
 
   <link rel="icon" type="image/png" href="https://val-mira.it/assets/valmira-logo-black.png" />
 
+  <!-- Preload hero image for faster LCP -->
+  <link rel="preload" as="image" href="https://val-mira.it/assets/valmira-hero.jpg" fetchpriority="high" />
+
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
@@ -64,10 +67,12 @@
   }
   </script>
 
-  <!-- DM Sans -->
+  <!-- DM Sans – non-render-blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <!-- Load font async, swap in when ready so it never blocks render -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500&display=swap" rel="stylesheet" /></noscript>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -135,9 +140,8 @@
       margin: 0 auto; padding: 0 var(--ph) 88px; width: 100%;
     }
     .hero-label { font-size: .64rem; letter-spacing: .24em; text-transform: uppercase; color: var(--stone-lt); margin-bottom: 18px; display: block; }
-    .hero-h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4.8rem); font-weight: 400; line-height: 1.1; color: var(--white); max-width: 820px; margin-bottom: 22px; }
+    .hero-h1 { font-family: var(--serif); font-size: clamp(2rem, 4.2vw, 3.8rem); font-weight: 400; line-height: 1.12; color: var(--white); max-width: 680px; margin-bottom: 36px; }
     .hero-h1 em { font-style: italic; color: rgba(255,255,255,.82); }
-    .hero-sub { font-size: .94rem; color: rgba(255,255,255,.76); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn-hero {
       display: inline-flex; align-items: center; padding: 15px 34px;
@@ -470,10 +474,9 @@
     /* ── MOBILE HERO ───────────────────────────────────────────── */
     @media(max-width:700px){
       .hero { min-height: 100svh; height: 100svh; max-height: none; align-items: stretch; }
-      .hero-content { height: 100%; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 118px; padding-bottom: 78px; }
-      .hero-label { margin-bottom: 14px; }
+      .hero-content { height: 100%; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 110px; padding-bottom: 60px; }
+      .hero-label { margin-bottom: 16px; }
       .hero-h1 { margin-bottom: 0; max-width: 96%; }
-      .hero-sub { margin-top: 18px; margin-bottom: 0; }
       .hero-btns { margin-top: auto; width: 100%; }
       .hero-btns .btn-ghost, .hero-btns .btn-hero { width: 100%; justify-content: center; }
       .hero-scroll { display: none; }
@@ -507,18 +510,14 @@
 
 <!-- ── HERO ────────────────────────────────────────────────────── -->
 <section class="hero">
-  <img class="hero-img" src="https://val-mira.it/assets/valmira-hero.jpg" alt="Val Mira – Ferienwohnung mit Infinity Pool am Ritten Südtirol – Design Ferienwohnung & Boutique Ferienwohnung" />
+  <img class="hero-img" src="https://val-mira.it/assets/valmira-hero.jpg" alt="Val Mira – Ferienwohnung mit Infinity Pool am Ritten Südtirol – Design Ferienwohnung & Boutique Ferienwohnung" fetchpriority="high" decoding="sync" />
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="hero-label">Design Ferienwohnung · Boutique · Ritten · Südtirol</span>
+    <span class="hero-label">Ferienwohnung am Ritten · Südtirol</span>
     <h1 class="hero-h1">
-      Ferienwohnung am Ritten<br />mit Infinity Pool –<br /><em>Luxus &amp; Design Ferienwohnung Südtirol.</em>
+      Ferienwohnung am Ritten –<br /><em>Infinity Pool &amp; Design.</em>
     </h1>
-    <p class="hero-sub">
-      Boutique Ferienwohnung am Ritten bei Oberbozen &amp; Klobenstein. Ferienwohnung mit Pool auf einem Weingut in Südtirol – Weingut Südtirol Übernachtung auf höchstem Niveau. Urlaub am Ritten Südtirol mit Architektur von Andreas Gruber.
-    </p>
     <div class="hero-btns">
-      <a class="btn-hero" href="#buchen">Verfügbarkeit anfragen</a>
       <a class="btn-ghost" href="#tuerme">Die Türme entdecken ↓</a>
     </div>
   </div>
@@ -572,7 +571,7 @@
       </p>
       <a class="intro-cta" href="#buchen">Verfügbarkeit prüfen →</a>
     </div>
-    <img class="intro-img" src="https://val-mira.it/assets/01%20Pool%20Aussicht%20Quadrat%20copy.jpg" alt="Ferienwohnung mit Infinity Pool Südtirol – Val Mira Boutique Ferienwohnung am Ritten" />
+    <img class="intro-img" src="https://val-mira.it/assets/01%20Pool%20Aussicht%20Quadrat%20copy.jpg" alt="Ferienwohnung mit Infinity Pool Südtirol – Val Mira Boutique Ferienwohnung am Ritten" loading="lazy" decoding="async" />
   </div>
 </section>
 
@@ -614,7 +613,7 @@
     </div>
     <div class="rooms-grid">
       <div class="room-card fade">
-        <img class="room-img" src="https://val-mira.it/assets/07%20Turm%20und%20Blick%20auf%20Schlern%20copy.jpg" alt="Ferienwohnung mit Infinity Pool Ritten – Turm I Val Mira, Design Ferienwohnung Südtirol" />
+        <img class="room-img" src="https://val-mira.it/assets/07%20Turm%20und%20Blick%20auf%20Schlern%20copy.jpg" alt="Ferienwohnung mit Infinity Pool Ritten – Turm I Val Mira, Design Ferienwohnung Südtirol" loading="lazy" decoding="async" />
         <div class="room-body">
           <h3 class="room-h3">Turm I — Ferienwohnung mit Pool Ritten</h3>
           <p class="room-text">
@@ -630,7 +629,7 @@
         </div>
       </div>
       <div class="room-card fade">
-        <img class="room-img" src="https://val-mira.it/assets/02%20Pool%20von%20vorne.jpg" alt="Boutique Ferienwohnung Ritten – Turm II Val Mira, Ferienwohnung Ritten Südtirol mit Weinberg-Blick" />
+        <img class="room-img" src="https://val-mira.it/assets/02%20Pool%20von%20vorne.jpg" alt="Boutique Ferienwohnung Ritten – Turm II Val Mira, Ferienwohnung Ritten Südtirol mit Weinberg-Blick" loading="lazy" decoding="async" />
         <div class="room-body">
           <h3 class="room-h3">Turm II — Boutique Ferienwohnung Ritten</h3>
           <p class="room-text">
@@ -652,7 +651,7 @@
 
 <!-- ── QUOTE ────────────────────────────────────────────────────── -->
 <section class="quote-sec">
-  <img class="quote-img" src="https://val-mira.it/assets/04%20Blick%20nach%20Innen%20A%20copy.jpg" alt="Design Ferienwohnung Südtirol – Interieur Val Mira, Boutique Ferienwohnung Ritten" />
+  <img class="quote-img" src="https://val-mira.it/assets/04%20Blick%20nach%20Innen%20A%20copy.jpg" alt="Design Ferienwohnung Südtirol – Interieur Val Mira, Boutique Ferienwohnung Ritten" loading="lazy" decoding="async" />
   <div class="quote-overlay"></div>
   <div class="quote-inner">
     <blockquote>Manchmal ist der wichtigste Raum der Blick.</blockquote>
@@ -772,7 +771,7 @@
 <!-- ── LAGE ─────────────────────────────────────────────────────── -->
 <section class="lage" id="lage">
   <div class="lage-inner fade">
-    <img class="lage-img" src="https://val-mira.it/assets/06%20Blick%20auf%20Trostburg.jpg" alt="Ferienwohnung Oberbozen & Klobenstein – Val Mira, Urlaub am Ritten Südtirol" />
+    <img class="lage-img" src="https://val-mira.it/assets/06%20Blick%20auf%20Trostburg.jpg" alt="Ferienwohnung Oberbozen & Klobenstein – Val Mira, Urlaub am Ritten Südtirol" loading="lazy" decoding="async" />
     <div class="lage-text">
       <span class="label">Die Lage</span>
       <h2 class="section-h2">
