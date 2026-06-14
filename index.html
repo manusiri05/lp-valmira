@@ -908,7 +908,7 @@
 <script>
 (async function () {
   var TENANT   = 'val-mira';
-  var BOOK_URL = 'https://val-mira.it/buchen.html';   // DE  · IT/EN: hier andere URL
+  var BOOK_URL = location.pathname;   // Test-LP: Formular ist auf derselben Seite (#buchen)
   var TITLE    = 'Kurzfristig frei – mit Vorteil';     // Überschrift pro Sprache
   var el = document.getElementById('restplaetze');
   if (!el) return;
@@ -921,7 +921,7 @@
     el.innerHTML =
       '<span class="vm-rp-label">Restplätze</span><h2 class="vm-rp-title">' + TITLE + '</h2>' +
       '<div class="vm-rp-grid">' + offers.map(function (o) {
-        var href = BOOK_URL + '?unit=' + encodeURIComponent(o.unit_name) + '&check_in=' + o.check_in + '&check_out=' + o.check_out;
+        var href = BOOK_URL + '?unit=' + encodeURIComponent(o.unit_name) + '&check_in=' + o.check_in + '&check_out=' + o.check_out + '&discount=' + (o.discount_pct || 0) + '&src=restplatzboerse#buchen';
         var per  = o.nights > 0 ? Math.round(o.final_price / o.nights) : o.final_price;
         return '<article class="vm-rp-card"><div class="vm-rp-top"><span class="vm-rp-unit">' + o.unit_name + '</span>' +
           (o.discount_pct > 0 ? '<span class="vm-rp-badge">-' + o.discount_pct + '%</span>' : '') + '</div>' +
@@ -1465,6 +1465,28 @@ async function handleSubmit(ev) {
     showError('Keine Verbindung zum Server. Bitte prüfe deine Internetverbindung und versuche es erneut.');
   }
 }
+</script>
+
+<!-- RESTPLATZ PREFILL: Datum/Turm/Nachricht aus URL uebernehmen -->
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var ci = p.get('check_in'), co = p.get('check_out'), u = p.get('unit') || '', d = p.get('discount');
+  var de = function (s) { if (!s) return ''; var x = s.split('-'); return x[2] + '.' + x[1] + '.' + x[0]; };
+  function apply() {
+    if (ci && document.getElementById('checkin'))  document.getElementById('checkin').value  = ci;
+    if (co && document.getElementById('checkout')) document.getElementById('checkout').value = co;
+    var ul = u.toLowerCase();
+    if (typeof selectTurm === 'function') { if (ul.indexOf('2') >= 0) selectTurm('turm2'); else if (ul.indexOf('1') >= 0) selectTurm('turm1'); }
+    if (typeof updateSummary === 'function') updateSummary();
+    if (p.get('src') === 'restplatzboerse') {
+      var m = document.getElementById('fmsg');
+      if (m && !m.value) m.value = 'Restplatzbörse-Anfrage: ' + u + ', ' + de(ci) + '–' + de(co) + (d ? ', -' + d + '%' : '');
+    }
+    var sec = document.getElementById('buchen'); if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+  }
+  document.readyState !== 'loading' ? apply() : document.addEventListener('DOMContentLoaded', apply);
+})();
 </script>
 </body>
 </html>
