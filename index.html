@@ -466,7 +466,7 @@
     /* ── FOOTER ────────────────────────────────────────────────── */
     .lp-footer { background: var(--dark); padding: 44px var(--ph); border-top: 1px solid rgba(255,255,255,.08); }
     .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
-    .footer-logo img { height: 32px; width: auto; opacity: .65; }
+    .footer-logo img { height: 32px; opacity: .65; }
     .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
     .footer-links a { font-size: .74rem; color: rgba(255,255,255,.4); transition: color .2s; }
     .footer-links a:hover { color: var(--white); }
@@ -489,7 +489,6 @@
     #ootb-booking {
       min-height: 460px;
       background: var(--bg-alt);
-      contain: layout paint;
     }
     @media(max-width:700px){
       #ootb-booking { min-height: 560px; }
@@ -1079,40 +1078,8 @@
 
 
 <!-- ── PMS BUCHUNGSWIDGET ──────────────────────────────────────── -->
-<div id="ootb-booking" data-tenant="val-mira" data-color="#2E3829" aria-busy="true"></div>
-<script>
-(function () {
-  var widget = document.getElementById('ootb-booking');
-  var loaded = false;
-
-  function loadBookingWidget() {
-    if (loaded || !widget) return;
-    loaded = true;
-    var script = document.createElement('script');
-    script.src = 'https://pms.outofthebox-media.com/booking.js';
-    script.async = true;
-    script.onload = function () { widget.removeAttribute('aria-busy'); };
-    script.onerror = function () {
-      loaded = false;
-      widget.removeAttribute('aria-busy');
-      console.warn('[ootb-booking] Widget konnte nicht geladen werden.');
-    };
-    document.head.appendChild(script);
-  }
-
-  if ('IntersectionObserver' in window && widget) {
-    var widgetObserver = new IntersectionObserver(function (entries) {
-      if (entries[0] && entries[0].isIntersecting) {
-        widgetObserver.disconnect();
-        loadBookingWidget();
-      }
-    }, { rootMargin: '900px 0px' });
-    widgetObserver.observe(widget);
-  } else {
-    window.addEventListener('load', loadBookingWidget, { once: true });
-  }
-})();
-</script>
+<div id="ootb-booking" data-tenant="val-mira" data-color="#2E3829"></div>
+<script src="https://pms.outofthebox-media.com/booking.js" async></script>
 
 
 <!-- ── RESTPLÄTZE ─────────────────────────────────────────────── -->
