@@ -246,14 +246,15 @@
     /* ── ROOMS ─────────────────────────────────────────────────── */
     .rooms { background: var(--white); padding: 96px var(--ph); }
     .rooms-inner { max-width: var(--max); margin: 0 auto; }
-    .rooms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-    .room-card .room-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    /* Türme exakt wie auf der Hauptwebsite: feste Bildhöhe 600 px, gap 80, Fokus bei 30 % */
+    .rooms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .room-card .room-img { width: 100%; height: 600px; object-fit: cover; object-position: center 30%; }
     .room-body { padding: 26px 0 0; }
     .room-h3 { font-family: var(--serif); font-size: 1.7rem; font-weight: 300; color: var(--dark); margin-bottom: 8px; }
     .room-text { font-size: .89rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
     .room-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
     .room-tag { font-size: .66rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); background: var(--bg-alt); padding: 5px 12px; }
-    @media(max-width:700px){ .rooms-grid{grid-template-columns:1fr;gap:44px} }
+    @media(max-width:700px){ .rooms-grid{grid-template-columns:1fr;gap:56px} .room-card .room-img{height:360px} }
 
     /* ── QUOTE ─────────────────────────────────────────────────── */
     .quote-sec { position: relative; min-height: 62vh; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 90px var(--ph); }
@@ -348,20 +349,29 @@
       .vm-gallery-head { display: block; margin-bottom: 20px; }
       .vm-gallery-note { margin-top: 18px; max-width: 520px; }
       .gallery-hint { display: block; padding: 0 var(--ph); margin-bottom: 18px; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+      /* Mobil: eine Zeile mit fester Höhe. Höhe steht auf der Spur UND auf den
+         Kacheln, damit aspect-ratio/min-height aus dem Desktop-Raster nicht
+         dagegenarbeiten und Bilder abgeschnitten werden. */
       .vm-gallery-track {
-        display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 82%);
+        display: grid; grid-auto-flow: column;
+        grid-auto-columns: 78%;
+        grid-auto-rows: 460px;
         grid-template-columns: none; grid-template-rows: none; gap: 12px;
         overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
         padding: 0 var(--ph); -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
       }
       .vm-gallery-track::-webkit-scrollbar { display: none; }
-      .vm-g-item, .vm-g-large, .vm-g-wide, .vm-g-tall { grid-column: auto; grid-row: auto; aspect-ratio: 4/5; min-height: 380px; scroll-snap-align: center; }
+      .vm-g-item, .vm-g-large, .vm-g-wide, .vm-g-tall {
+        grid-column: auto; grid-row: auto;
+        aspect-ratio: auto; min-height: 0; height: 460px;
+        scroll-snap-align: center;
+      }
       .vm-gallery-inner > .cta-row { margin-top: 28px; }
     }
     @media(max-width:480px){
-      .vm-gallery-track { grid-auto-columns: 86%; }
-      .vm-g-item, .vm-g-large, .vm-g-wide, .vm-g-tall { min-height: 340px; }
+      .vm-gallery-track { grid-auto-columns: 84%; grid-auto-rows: 400px; }
+      .vm-g-item, .vm-g-large, .vm-g-wide, .vm-g-tall { height: 400px; }
     }
 
     /* ── INFO-ACCORDIONS ───────────────────────────────────────── */
@@ -418,8 +428,6 @@
     .seo-block-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; margin-top: 38px; }
     .seo-col h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: var(--forest); margin-bottom: 12px; }
     .seo-col p { font-size: .87rem; color: var(--muted); line-height: 1.85; margin-bottom: 10px; }
-    .kw-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-    .kw-tag { font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--forest); background: var(--white); border: 1px solid var(--border); padding: 6px 13px; }
     @media(max-width:700px){ .seo-block-grid{grid-template-columns:1fr;gap:34px} }
 
     /* ── DIREKTBUCHUNG (WIDGET) ────────────────────────────────── */
@@ -547,6 +555,8 @@
     .footer-bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-bottom-links a { font-size: .74rem; color: rgba(255,255,255,.42); transition: color .2s; }
     .footer-bottom-links a:hover { color: var(--white); }
+    .footer-kw { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.07);
+                 font-size: .68rem; line-height: 1.9; color: rgba(255,255,255,.22); }
     @media(max-width:880px){ .footer-top{grid-template-columns:1fr 1fr;gap:34px} }
     @media(max-width:520px){ .footer-top{grid-template-columns:1fr} .footer-bottom{flex-direction:column;align-items:flex-start} }
     @media(max-width:780px){ .lp-footer { padding-bottom: 92px; } }
@@ -650,7 +660,7 @@
         <a class="btn-outline" href="#preise">Preise ansehen</a>
       </div>
     </div>
-    <img class="intro-img" src="../assets/intro-tuerme-pool-800.webp" width="800" height="1200"
+    <img class="intro-img" src="../assets/intro-tuerme-pool-1100.webp" width="1100" height="1649"
          alt="Val Mira von oben – zwei Ferienwohnungen mit Infinity Pool am Weinberg, Ritten Südtirol"
          loading="lazy" decoding="async" />
   </div>
@@ -678,13 +688,13 @@
     </div>
     <div class="rooms-grid">
       <div class="room-card fade">
-        <img class="room-img" src="../assets/turm-i-900.webp" width="900" height="1200"
+        <img class="room-img" src="../assets/turm-i-1100.webp" width="1100" height="1649"
              alt="Turm I – Ferienwohnung mit Pool am Ritten, direkter Poolzugang und Terrasse, Val Mira Südtirol"
              loading="lazy" decoding="async" />
         <div class="room-body">
           <h3 class="room-h3">Turm I — Poolseite</h3>
           <p class="room-text">
-            Turm I liegt zur Poolseite und öffnet sich direkt nach draußen. Unten wohnen und kochen, in der Mitte baden, oben schlafen mit Blick ins Eisacktal. Für zwei Personen großzügig; im Wohnbereich gibt es eine zusätzliche Schlafmöglichkeit.
+            Turm I liegt zur Poolseite und öffnet sich direkt nach draußen. Bei der Buchung gehört dir der ganze Turm: drei Ebenen à rund 25 m² — unten Küche und Wohnzimmer, im ersten Stock das Bad, im zweiten das Schlafzimmer mit Blick ins Eisacktal. Für zwei Personen großzügig; im Wohnbereich gibt es eine zusätzliche Schlafmöglichkeit.
           </p>
           <div class="room-tags">
             <span class="room-tag">Direkter Poolzugang</span>
@@ -697,13 +707,13 @@
         </div>
       </div>
       <div class="room-card fade">
-        <img class="room-img" src="../assets/turm-ii-900.webp" width="900" height="1200"
+        <img class="room-img" src="../assets/turm-ii-1700.webp" width="1700" height="1134"
              alt="Turm II – Ferienwohnung Ritten hofseitig mit Schlernblick, Val Mira auf dem Weingut"
              loading="lazy" decoding="async" />
         <div class="room-body">
           <h3 class="room-h3">Turm II — Hofseite</h3>
           <p class="room-text">
-            Turm II liegt etwas ruhiger zur Hof- und Weinbergseite, der Pool ist in wenigen Schritten erreichbar. Gleicher Aufbau, gleiche Qualität – oben der Schlafraum mit Blick auf den Schlern. Für alle, die etwas zurückgezogener wohnen.
+            Turm II liegt etwas ruhiger zur Hof- und Weinbergseite, der Pool ist in wenigen Schritten erreichbar. Auch hier gehört dir bei der Buchung der ganze Turm: drei Ebenen à rund 25 m² — unten Küche und Wohnzimmer, im ersten Stock das Bad, im zweiten das Schlafzimmer mit Blick auf den Schlern. Für alle, die etwas zurückgezogener wohnen.
           </p>
           <div class="room-tags">
             <span class="room-tag">Weinberg &amp; Schlernblick</span>
@@ -724,7 +734,7 @@
 
 <!-- ── QUOTE BAND ──────────────────────────────────────────────── -->
 <section class="quote-sec">
-  <img class="quote-img" src="../assets/band-landschaft-1600.webp" width="1500" height="1000"
+  <img class="quote-img" src="../assets/band-landschaft-1700.webp" width="1700" height="1134"
        alt="Val Mira am Hang über dem Eisacktal – Ferienwohnungen am Ritten in Südtirol, Blick auf die Berge"
        loading="lazy" decoding="async" />
   <div class="quote-overlay"></div>
@@ -923,7 +933,7 @@
 
 <!-- ── BAND: POOL ──────────────────────────────────────────────── -->
 <section class="band">
-  <img src="../assets/band-pool-spiegel-1600.webp" width="1600" height="1067"
+  <img src="../assets/band-pool-spiegel-1700.webp" width="1700" height="1134"
        alt="Infinity Pool von Val Mira mit Spiegelung der Dolomiten – Ferienwohnung mit Pool in Südtirol"
        loading="lazy" decoding="async" />
 </section>
@@ -941,7 +951,7 @@
     <p class="gallery-hint">← Wischen für mehr Bilder</p>
     <div class="vm-gallery-track fade" aria-label="Val Mira – Ferienwohnung Ritten Südtirol, Bildergalerie">
       <figure class="vm-g-item vm-g-large">
-        <img src="../assets/g-wohnen-kueche-1100.webp" width="1100" height="734" alt="Wohnbereich mit Messingküche und freischwebender Treppe – Design-Ferienwohnung Ritten Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-wohnen-kueche-1200.webp" width="1200" height="800" alt="Wohnbereich mit Messingküche und freischwebender Treppe – Design-Ferienwohnung Ritten Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Wohnen &amp; Kochen</figcaption>
       </figure>
       <figure class="vm-g-item">
@@ -949,15 +959,15 @@
         <figcaption class="vm-g-caption">Baden mit Blick</figcaption>
       </figure>
       <figure class="vm-g-item">
-        <img src="../assets/g-messingkueche-900.webp" width="900" height="600" alt="Messingküche in der Ferienwohnung am Ritten – Val Mira Design Ferienwohnung Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-messingkueche-1000.webp" width="1000" height="667" alt="Messingküche in der Ferienwohnung am Ritten – Val Mira Design Ferienwohnung Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Messingküche</figcaption>
       </figure>
       <figure class="vm-g-item vm-g-tall">
-        <img src="../assets/g-fensterplatz-800.webp" width="800" height="1200" alt="Fensterplatz mit Sessel und Blick ins Grüne – Ferienwohnung Ritten Südtirol, Val Mira" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-fensterplatz-1000.webp" width="1000" height="1499" alt="Fensterplatz mit Sessel und Blick ins Grüne – Ferienwohnung Ritten Südtirol, Val Mira" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Platz am Fenster</figcaption>
       </figure>
       <figure class="vm-g-item">
-        <img src="../assets/g-essplatz-900.webp" width="900" height="600" alt="Essplatz unter der Treppe – Design-Ferienwohnung Südtirol, Val Mira am Ritten" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-essplatz-1000.webp" width="1000" height="667" alt="Essplatz unter der Treppe – Design-Ferienwohnung Südtirol, Val Mira am Ritten" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Essplatz</figcaption>
       </figure>
       <figure class="vm-g-item vm-g-wide">
@@ -965,15 +975,15 @@
         <figcaption class="vm-g-caption">Infinity Pool · nur für Gäste</figcaption>
       </figure>
       <figure class="vm-g-item">
-        <img src="../assets/g-treppe-900.webp" width="900" height="600" alt="Freischwebende Treppe aus Beton – Architektur von Andreas Gruber, Val Mira Ritten" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-treppe-1000.webp" width="1000" height="667" alt="Freischwebende Treppe aus Beton – Architektur von Andreas Gruber, Val Mira Ritten" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Freischwebende Treppe</figcaption>
       </figure>
       <figure class="vm-g-item">
-        <img src="../assets/g-badewanne-900.webp" width="900" height="600" alt="Freistehende Badewanne vor dem Panoramafenster – Luxus Ferienwohnung Ritten Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-badewanne-1000.webp" width="1000" height="667" alt="Freistehende Badewanne vor dem Panoramafenster – Luxus Ferienwohnung Ritten Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Badewanne mit Aussicht</figcaption>
       </figure>
       <figure class="vm-g-item vm-g-wide">
-        <img src="../assets/g-pool-drohne-1000.webp" width="1000" height="667" alt="Infinity Pool von oben im Weinberg – Ferienwohnung mit Infinity Pool Südtirol, Val Mira" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-pool-drohne-1200.webp" width="1200" height="800" alt="Infinity Pool von oben im Weinberg – Ferienwohnung mit Infinity Pool Südtirol, Val Mira" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Pool im Weinberg</figcaption>
       </figure>
       <figure class="vm-g-item">
@@ -981,11 +991,11 @@
         <figcaption class="vm-g-caption">Eigene Küche</figcaption>
       </figure>
       <figure class="vm-g-item">
-        <img src="../assets/g-schlafzimmer-900.webp" width="900" height="600" alt="Schlafzimmer mit Dolomitenblick – Ferienwohnung am Ritten, Val Mira Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-schlafzimmer-1000.webp" width="1000" height="667" alt="Schlafzimmer mit Dolomitenblick – Ferienwohnung am Ritten, Val Mira Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Schlafen ganz oben</figcaption>
       </figure>
       <figure class="vm-g-item vm-g-wide">
-        <img src="../assets/g-turm-pool-900.webp" width="900" height="600" alt="Turm mit Pool und Bergblick – Ferienwohnung mit Pool Ritten, Val Mira Weingut Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <img src="../assets/g-turm-pool-1200.webp" width="1200" height="800" alt="Turm mit Pool und Bergblick – Ferienwohnung mit Pool Ritten, Val Mira Weingut Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Turm &amp; Pool</figcaption>
       </figure>
       <figure class="vm-g-item">
@@ -1176,7 +1186,7 @@
     </div>
 
     <aside class="infos-aside fade">
-      <img src="../assets/g-turm-pool-900.webp" width="900" height="600"
+      <img src="../assets/g-turm-pool-1200.webp" width="1200" height="800"
            alt="Turm von Val Mira mit Infinity Pool im Weinberg – Ferienwohnung am Ritten, Südtirol"
            loading="lazy" decoding="async" />
       <p>Val Mira, Rotwand 26 in Lengstein am Ritten. Zwei Türme, ein Weingut, ein Infinity Pool — und sonst nichts.</p>
@@ -1285,24 +1295,6 @@
         <p>Val Mira ist offiziell <strong>Urlaub auf dem Bauernhof</strong> – genauer: <strong>Urlaub auf dem Weingut</strong>. Sophia und Stefan bauen Sauvignon, Riesling und Gewürztraminer direkt am Hof an. Wer in Südtirol auf einem Weingut übernachten möchte, ohne auf Design und Privatsphäre zu verzichten, findet hier beides.</p>
         <p>Die Architektur stammt von Andreas Gruber, gebaut wurde nach <strong>KlimaHaus-Gold-Standard</strong> mit Wärmepumpe, Photovoltaik am Hof und schadstoffarmen Farben. Von hier aus sind Seiser Alm, Gröden, Villnöss, Brixen und Bozen in 20 bis 50 Minuten erreichbar – die <strong>Dolomiten</strong> also praktisch vor der Tür.</p>
       </div>
-    </div>
-    <div class="kw-cloud fade">
-      <span class="kw-tag">Ferienwohnung Ritten</span>
-      <span class="kw-tag">Ferienwohnung Ritten Südtirol</span>
-      <span class="kw-tag">Ferienwohnung mit Pool Südtirol</span>
-      <span class="kw-tag">Ferienwohnung mit Infinity Pool</span>
-      <span class="kw-tag">Chalet Südtirol mit Pool</span>
-      <span class="kw-tag">Weingut Südtirol übernachten</span>
-      <span class="kw-tag">Urlaub auf dem Weingut Südtirol</span>
-      <span class="kw-tag">Urlaub auf dem Bauernhof Südtirol</span>
-      <span class="kw-tag">Ferienwohnung Lengstein</span>
-      <span class="kw-tag">Unterkunft Ritten</span>
-      <span class="kw-tag">Luxus Ferienwohnung Südtirol</span>
-      <span class="kw-tag">Design Ferienwohnung Südtirol</span>
-      <span class="kw-tag">Ferienwohnung Eisacktal</span>
-      <span class="kw-tag">Ferienwohnung Nähe Seiser Alm</span>
-      <span class="kw-tag">Ferienwohnung Nähe Brixen</span>
-      <span class="kw-tag">Apartment Renon</span>
     </div>
   </div>
 </section>
@@ -1524,6 +1516,9 @@
         <a href="https://www.val-mira.it/de/agb.html" target="_blank" rel="noopener">AGB</a>
       </nav>
     </div>
+      <p class="footer-kw">
+        Ferienwohnung Ritten · Ferienwohnung Ritten Südtirol · Ferienwohnung mit Pool Südtirol · Ferienwohnung mit Infinity Pool · Chalet Südtirol mit Pool · Weingut Südtirol übernachten · Urlaub auf dem Weingut Südtirol · Urlaub auf dem Bauernhof Südtirol · Ferienwohnung Lengstein · Unterkunft Ritten · Luxus Ferienwohnung Südtirol · Design Ferienwohnung Südtirol · Ferienwohnung Eisacktal · Ferienwohnung Nähe Seiser Alm · Ferienwohnung Nähe Brixen · Apartment Renon
+      </p>
   </div>
 </footer>
 
