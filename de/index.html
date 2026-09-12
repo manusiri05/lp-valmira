@@ -32,25 +32,21 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="googlebot" content="noindex, nofollow" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/favicon.png" />
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
 
-  <!-- Open Graph (für geteilte Links / Ads-Vorschau) -->
   <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://urlaub.val-mira.it/de/" />
   <meta property="og:title"       content="Ferienwohnung Ritten mit Infinity Pool – Val Mira" />
   <meta property="og:description" content="Zwei Türme auf einem Weingut am Ritten. Infinity Pool, Blick ins Eisacktal, die Dolomiten vor der Tür." />
   <meta property="og:image"       content="https://urlaub.val-mira.it/assets/valmira-og.jpg" />
-  <meta property="og:url"         content="https://urlaub.val-mira.it/de/" />
   <meta property="og:locale"      content="de_DE" />
   <meta property="og:site_name"   content="Val Mira" />
 
-  <!-- Verbindungen zu externen Hosts früh öffnen -->
   <link rel="preconnect" href="https://pms.outofthebox-media.com" crossorigin />
   <link rel="dns-prefetch" href="//pms.outofthebox-media.com" />
   <link rel="preconnect" href="https://dashboard.outofthebox-media.com" crossorigin />
 
-  <!-- Hero vorladen (LCP) -->
   <link rel="preload" as="image" href="../assets/hero-pool-1920.webp"
         imagesrcset="../assets/hero-pool-800.webp 800w, ../assets/hero-pool-1200.webp 1200w, ../assets/hero-pool-1920.webp 1920w"
         imagesizes="100vw" fetchpriority="high" />
@@ -63,7 +59,6 @@
         onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=Jost:wght@300;400;500&amp;display=swap" /></noscript>
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,7 +66,7 @@
     "name": "Val Mira – Ferienwohnungen am Ritten mit Infinity Pool",
     "description": "Zwei Design-Ferienwohnungen (Türme) auf einem Weingut am Ritten in Südtirol, mit Infinity Pool und Blick ins Eisacktal. 75 m² auf drei Ebenen, Urlaub auf dem Bauernhof.",
     "url": "https://urlaub.val-mira.it/de/",
-    "image": "https://www.val-mira.it/assets/valmira-og.jpg",
+    "image": "https://urlaub.val-mira.it/assets/valmira-og.jpg",
     "email": "info@val-mira.it",
     "priceRange": "430–480 € pro Turm und Nacht",
     "numberOfRooms": 2,
@@ -142,6 +137,44 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
+    /* ── BUTTONS ───────────────────────────────────────────────── */
+    .btn-solid {
+      display: inline-flex; align-items: center; justify-content: center; padding: 15px 34px;
+      background: var(--dark); color: var(--white);
+      font-family: var(--sans); font-size: .76rem; font-weight: 400; letter-spacing: .1em;
+      text-transform: uppercase; border: none; cursor: pointer; transition: background .25s;
+    }
+    .btn-solid:hover { background: var(--forest); }
+    .btn-light {
+      display: inline-flex; align-items: center; justify-content: center; padding: 15px 34px;
+      background: var(--white); color: var(--dark);
+      font-size: .76rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase;
+      transition: background .25s; cursor: pointer; border: none;
+    }
+    .btn-light:hover { background: var(--bg-alt); }
+    .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center; padding: 14px 34px;
+      border: 1px solid var(--stone-lt); color: var(--dark);
+      font-size: .76rem; font-weight: 300; letter-spacing: .1em; text-transform: uppercase;
+      transition: border-color .25s, background .25s; cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--forest); background: var(--white); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center; padding: 14px 34px;
+      border: 1px solid rgba(255,255,255,.48); color: var(--white);
+      font-size: .76rem; font-weight: 300; letter-spacing: .1em; text-transform: uppercase;
+      transition: border-color .25s; cursor: pointer;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.85); }
+    .link-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .74rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--dark); border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: color .2s;
+    }
+    .link-cta:hover { color: var(--stone); }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 40px; }
+    @media(max-width:480px){ .cta-row { flex-direction: column; } .cta-row a { width: 100%; } }
+
     /* ── HEADER ─────────────────────────────────────────────────── */
     .lp-header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 900;
@@ -154,13 +187,8 @@
       padding: 0 var(--ph); display: flex; align-items: center;
       justify-content: space-between; gap: 20px;
     }
-    /* Logo-PNG hat weiße Glyphen auf Transparenz: auf dem Hero bleibt es weiß,
-       auf hellem Header wird es per Filter geschwärzt (kein zweites Bild nötig). */
     .h-logo img { height: 34px; width: auto; display: block; transition: filter .35s; }
     .lp-header.solid .h-logo img { filter: brightness(0); }
-    .h-right { display: flex; align-items: center; gap: 20px; }
-    .h-contact { font-size: .82rem; color: rgba(255,255,255,.82); transition: color .35s; }
-    .lp-header.solid .h-contact { color: var(--muted); }
     .h-cta {
       display: inline-flex; align-items: center; padding: 10px 22px;
       background: var(--dark); color: var(--white);
@@ -180,20 +208,6 @@
     .hero-h1 em { font-style: italic; color: rgba(255,255,255,.86); }
     .hero-sub { font-size: .95rem; color: rgba(255,255,255,.78); max-width: 500px; margin-bottom: 32px; line-height: 1.7; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn-hero {
-      display: inline-flex; align-items: center; padding: 15px 34px;
-      background: var(--white); color: var(--dark);
-      font-size: .76rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase;
-      transition: background .25s; cursor: pointer; border: none;
-    }
-    .btn-hero:hover { background: var(--bg); }
-    .btn-ghost {
-      display: inline-flex; align-items: center; padding: 14px 34px;
-      border: 1px solid rgba(255,255,255,.48); color: var(--white);
-      font-size: .76rem; font-weight: 300; letter-spacing: .1em; text-transform: uppercase;
-      transition: border-color .25s; cursor: pointer;
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,.85); }
 
     /* ── USP BAR ───────────────────────────────────────────────── */
     .usps { background: var(--dark); }
@@ -213,32 +227,13 @@
     .section-desc { font-size: .92rem; color: var(--muted); line-height: 1.8; max-width: 620px; }
     .body-text { font-size: .93rem; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
 
-    /* ── DIREKTBUCHUNG (WIDGET) ────────────────────────────────── */
-    .direct { background: var(--white); padding: 84px var(--ph) 88px; }
-    .direct-inner { max-width: var(--max); margin: 0 auto; }
-    .direct-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 38px; flex-wrap: wrap; }
-    .direct-head .section-h2 { margin-bottom: 10px; }
-    .direct-benefits { list-style: none; display: flex; flex-direction: column; gap: 7px; min-width: 250px; }
-    .direct-benefits li { font-size: .83rem; color: var(--muted); display: flex; gap: 9px; align-items: baseline; }
-    .direct-benefits li::before { content: "◎"; color: var(--stone); font-size: .7rem; flex-shrink: 0; }
-    #ootb-booking { min-height: 420px; background: var(--bg-alt); border: 1px solid var(--border); }
-    @media(max-width:700px){ #ootb-booking { min-height: 520px; } }
-    .direct-fallback { margin-top: 20px; font-size: .83rem; color: var(--muted); }
-    .direct-fallback a { border-bottom: 1px solid var(--stone-lt); }
-
     /* ── INTRO ─────────────────────────────────────────────────── */
     .intro { background: var(--bg); padding: 96px var(--ph); }
-    .intro-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 76px; align-items: center; }
+    .intro-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 76px; align-items: center; }
     .intro-h2 { font-family: var(--serif); font-size: clamp(1.85rem, 3.1vw, 2.9rem); font-weight: 300; line-height: 1.18; color: var(--forest); margin-bottom: 24px; }
     .intro-h2 em { font-style: italic; }
-    .intro-cta {
-      display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
-      font-size: .74rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--dark); border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: color .2s;
-    }
-    .intro-cta:hover { color: var(--stone); }
-    .intro-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; }
-    @media(max-width:880px){ .intro-inner{grid-template-columns:1fr;gap:40px} }
+    .intro-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
+    @media(max-width:880px){ .intro-inner{grid-template-columns:1fr;gap:40px} .intro-img{aspect-ratio:4/5} }
 
     /* ── NUMBERS ───────────────────────────────────────────────── */
     .numbers { background: var(--bg-alt); padding: 58px var(--ph); }
@@ -252,23 +247,22 @@
     .rooms { background: var(--white); padding: 96px var(--ph); }
     .rooms-inner { max-width: var(--max); margin: 0 auto; }
     .rooms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-    .room-card .room-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; }
+    .room-card .room-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
     .room-body { padding: 26px 0 0; }
     .room-h3 { font-family: var(--serif); font-size: 1.7rem; font-weight: 300; color: var(--dark); margin-bottom: 8px; }
     .room-text { font-size: .89rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
     .room-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
     .room-tag { font-size: .66rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); background: var(--bg-alt); padding: 5px 12px; }
-    .btn-room { font-size: .74rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--dark); border-bottom: 1px solid currentColor; padding-bottom: 2px; display: inline-block; transition: color .2s; }
-    .btn-room:hover { color: var(--stone); }
     @media(max-width:700px){ .rooms-grid{grid-template-columns:1fr;gap:44px} }
 
     /* ── QUOTE ─────────────────────────────────────────────────── */
-    .quote-sec { position: relative; height: 58vh; min-height: 340px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .quote-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
-    .quote-overlay { position: absolute; inset: 0; background: rgba(14,17,12,.56); }
-    .quote-inner { position: relative; z-index: 2; text-align: center; padding: 0 var(--ph); max-width: 720px; }
+    .quote-sec { position: relative; min-height: 62vh; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 90px var(--ph); }
+    .quote-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
+    .quote-overlay { position: absolute; inset: 0; background: rgba(14,17,12,.58); }
+    .quote-inner { position: relative; z-index: 2; text-align: center; max-width: 720px; }
     .quote-inner blockquote { font-family: var(--serif); font-size: clamp(1.6rem, 3.2vw, 2.5rem); font-style: italic; font-weight: 300; color: var(--white); line-height: 1.35; margin-bottom: 18px; }
-    .quote-inner p { font-size: .89rem; color: rgba(255,255,255,.68); line-height: 1.75; }
+    .quote-inner p { font-size: .89rem; color: rgba(255,255,255,.68); line-height: 1.75; margin-bottom: 32px; }
+    .quote-inner .cta-row { justify-content: center; margin-top: 0; }
 
     /* ── FEATURES ──────────────────────────────────────────────── */
     .features { background: var(--bg); padding: 96px var(--ph); }
@@ -322,9 +316,9 @@
     @media(max-width:900px){ .dist-grid{grid-template-columns:1fr 1fr} }
     @media(max-width:520px){ .dist-grid{grid-template-columns:1fr} }
 
-    /* ── MID VISUAL ────────────────────────────────────────────── */
-    .mid-visual { background: var(--bg-alt); line-height: 0; }
-    .mid-visual img { width: 100%; max-height: 62vh; object-fit: cover; object-position: center 45%; display: block; }
+    /* ── VOLLBILD-BAND ─────────────────────────────────────────── */
+    .band { line-height: 0; background: var(--bg-alt); }
+    .band img { width: 100%; max-height: 66vh; object-fit: cover; object-position: center 50%; display: block; }
 
     /* ── GALERIE ───────────────────────────────────────────────── */
     .vm-gallery { background: var(--white); padding: 96px var(--ph); }
@@ -345,30 +339,108 @@
       font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; backdrop-filter: blur(4px);
     }
     .vm-g-item::after { content: ""; position: absolute; inset: auto 0 0 0; height: 42%; background: linear-gradient(to top, rgba(15,18,13,.38), transparent); pointer-events: none; }
+    .gallery-hint { display: none; }
+
+    /* Mobile: gesamte Galerie als Slider */
     @media(max-width:880px){
-      .vm-gallery { padding: 74px var(--ph); }
-      .vm-gallery-head { display: block; margin-bottom: 32px; }
+      .vm-gallery { padding: 74px 0; }
+      .vm-gallery-inner > .vm-gallery-head, .vm-gallery-inner > .cta-row { padding: 0 var(--ph); }
+      .vm-gallery-head { display: block; margin-bottom: 20px; }
       .vm-gallery-note { margin-top: 18px; max-width: 520px; }
+      .gallery-hint { display: block; padding: 0 var(--ph); margin-bottom: 18px; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
       .vm-gallery-track {
         display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 82%);
-        grid-template-columns: none; grid-template-rows: none; gap: 14px;
+        grid-template-columns: none; grid-template-rows: none; gap: 12px;
         overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
-        padding: 0 var(--ph) 14px 0; margin-right: calc(var(--ph) * -1); -webkit-overflow-scrolling: touch;
+        padding: 0 var(--ph); -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
       }
-      .vm-gallery-track::-webkit-scrollbar { height: 6px; }
-      .vm-gallery-track::-webkit-scrollbar-track { background: var(--bg-alt); }
-      .vm-gallery-track::-webkit-scrollbar-thumb { background: var(--stone-lt); }
-      .vm-g-item, .vm-g-large, .vm-g-wide, .vm-g-tall { grid-column: auto; grid-row: auto; aspect-ratio: 4/5; min-height: 360px; scroll-snap-align: start; }
+      .vm-gallery-track::-webkit-scrollbar { display: none; }
+      .vm-g-item, .vm-g-large, .vm-g-wide, .vm-g-tall { grid-column: auto; grid-row: auto; aspect-ratio: 4/5; min-height: 380px; scroll-snap-align: center; }
+      .vm-gallery-inner > .cta-row { margin-top: 28px; }
     }
-    @media(max-width:480px){ .vm-gallery-track { grid-auto-columns: 86%; } .vm-g-item, .vm-g-large, .vm-g-wide, .vm-g-tall { min-height: 330px; } }
+    @media(max-width:480px){
+      .vm-gallery-track { grid-auto-columns: 86%; }
+      .vm-g-item, .vm-g-large, .vm-g-wide, .vm-g-tall { min-height: 340px; }
+    }
+
+    /* ── INFO-ACCORDIONS ───────────────────────────────────────── */
+    .infos { background: var(--bg-alt); padding: 90px var(--ph); }
+    .infos-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.25fr .85fr; gap: 64px; align-items: start; }
+    .infos-aside { position: sticky; top: 92px; }
+    .infos-aside img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .infos-aside p { font-size: .79rem; color: var(--muted); line-height: 1.65; margin-top: 14px; }
+    @media(max-width:900px){ .infos-inner{grid-template-columns:1fr;gap:40px} .infos-aside{position:static; order:-1} .infos-aside img{aspect-ratio:3/2} }
+
+    .acc-list { margin-top: 40px; border-top: 1px solid var(--border); }
+    .acc-item { border-bottom: 1px solid var(--border); }
+    .acc-q {
+      width: 100%; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      background: none; border: none; cursor: pointer; text-align: left; font-family: var(--sans);
+    }
+    .acc-q-text { font-family: var(--serif); font-size: 1.32rem; font-weight: 400; color: var(--forest); line-height: 1.3; }
+    .acc-icon { color: var(--stone); font-size: 1.1rem; flex-shrink: 0; transition: transform .28s; line-height: 1; }
+    .acc-item.open .acc-icon { transform: rotate(45deg); }
+    .acc-a { display: none; padding: 0 0 26px; }
+    .acc-item.open .acc-a { display: block; }
+    .acc-a p { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px; max-width: 640px; }
+    .acc-a p:last-child { margin-bottom: 0; }
+    .acc-a a { border-bottom: 1px solid var(--stone-lt); }
+    .inc-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 26px; margin-bottom: 18px; }
+    .inc-list li { font-size: .86rem; color: var(--muted); display: flex; gap: 10px; align-items: baseline; line-height: 1.6; }
+    .inc-list li::before { content: "✓"; color: var(--forest); font-size: .8rem; flex-shrink: 0; }
+    .inc-list.excl li::before { content: "–"; color: var(--stone-lt); }
+    @media(max-width:620px){ .inc-list{grid-template-columns:1fr} }
+    .inc-sub { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); margin: 4px 0 12px; display: block; }
+    .fact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 26px; margin-bottom: 6px; }
+    @media(max-width:620px){ .fact-grid{grid-template-columns:1fr} }
+    .fact-key { font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 3px; }
+    .fact-val { font-size: .87rem; color: var(--dark); display: block; line-height: 1.5; }
+    .fact-note { font-size: .79rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── FAQ ───────────────────────────────────────────────────── */
+    .faq-sec { background: var(--white); padding: 84px var(--ph); }
+    .faq-inner { max-width: var(--max); margin: 0 auto; }
+    .faq-list { margin-top: 44px; border-top: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width: 100%; padding: 21px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--sans); }
+    .faq-q-text { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--forest); line-height: 1.32; }
+    .faq-arrow { color: var(--stone); font-size: .9rem; flex-shrink: 0; transition: transform .28s; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 0 22px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p { font-size: .89rem; color: var(--muted); line-height: 1.82; max-width: 780px; }
+    .faq-a a { border-bottom: 1px solid var(--stone-lt); }
+
+    /* ── SEO / RELEVANZ ────────────────────────────────────────── */
+    .seo-block { background: var(--bg); padding: 84px var(--ph); }
+    .seo-block-inner { max-width: var(--max); margin: 0 auto; }
+    .seo-block-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; margin-top: 38px; }
+    .seo-col h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: var(--forest); margin-bottom: 12px; }
+    .seo-col p { font-size: .87rem; color: var(--muted); line-height: 1.85; margin-bottom: 10px; }
+    .kw-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .kw-tag { font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--forest); background: var(--white); border: 1px solid var(--border); padding: 6px 13px; }
+    @media(max-width:700px){ .seo-block-grid{grid-template-columns:1fr;gap:34px} }
+
+    /* ── DIREKTBUCHUNG (WIDGET) ────────────────────────────────── */
+    .direct { background: var(--white); padding: 90px var(--ph) 80px; }
+    .direct-inner { max-width: var(--max); margin: 0 auto; }
+    .direct-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 38px; flex-wrap: wrap; }
+    .direct-head .section-h2 { margin-bottom: 10px; }
+    .direct-benefits { list-style: none; display: flex; flex-direction: column; gap: 7px; min-width: 250px; }
+    .direct-benefits li { font-size: .83rem; color: var(--muted); display: flex; gap: 9px; align-items: baseline; }
+    .direct-benefits li::before { content: "◎"; color: var(--stone); font-size: .7rem; flex-shrink: 0; }
+    #ootb-booking { min-height: 420px; background: var(--bg-alt); border: 1px solid var(--border); }
+    @media(max-width:700px){ #ootb-booking { min-height: 520px; } }
 
     /* ── ANFRAGEFORMULAR ───────────────────────────────────────── */
-    .booking { background: var(--bg-alt); padding: 96px var(--ph); }
+    .booking { background: var(--bg-alt); padding: 80px var(--ph) 96px; }
     .booking-inner { max-width: var(--max); margin: 0 auto; }
-    .booking-head { margin-bottom: 52px; }
+    .booking-head { margin-bottom: 48px; }
     .booking-h2 { font-family: var(--serif); font-size: clamp(1.9rem, 3.2vw, 2.9rem); font-weight: 300; color: var(--forest); line-height: 1.16; margin-bottom: 12px; }
     .booking-h2 em { font-style: italic; }
     .booking-sub { font-size: .92rem; color: var(--muted); max-width: 560px; line-height: 1.75; }
+    .booking-sub a { border-bottom: 1px solid var(--stone-lt); }
     .booking-layout { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: start; }
     @media(max-width:860px){ .booking-layout{grid-template-columns:1fr;gap:42px} .book-summary{position:static;} }
 
@@ -421,7 +493,7 @@
     .f-legal { font-size: .74rem; color: var(--muted); margin-top: 14px; line-height: 1.6; }
     .f-legal a { border-bottom: 1px solid var(--border); }
 
-    .book-summary { position: sticky; top: 88px; }
+    .book-summary { position: sticky; top: 92px; }
     .sum-card { background: var(--white); border: 1px solid var(--border); padding: 28px; margin-bottom: 18px; }
     .sum-turm-name { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: var(--dark); margin-bottom: 4px; }
     .sum-desc-text { font-size: .81rem; color: var(--muted); margin-bottom: 20px; }
@@ -444,48 +516,20 @@
     #success-state p { color:var(--muted); font-size:.94rem; margin-bottom:28px; max-width:460px; }
     #success-state a { font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; color:var(--forest); border-bottom:1px solid var(--stone-lt); padding-bottom:2px; }
 
-    /* ── GUT ZU WISSEN ─────────────────────────────────────────── */
-    .gww { background: var(--bg); padding: 84px var(--ph); }
-    .gww-inner { max-width: var(--max); margin: 0 auto; }
-    .gww-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 26px 28px; margin-top: 44px; }
-    .gww-key { font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); margin-bottom: 6px; display: block; }
-    .gww-val { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--dark); margin-bottom: 4px; display: block; line-height: 1.3; }
-    .gww-note { font-size: .79rem; color: var(--muted); line-height: 1.55; }
-    @media(max-width:800px){ .gww-grid{grid-template-columns:1fr 1fr} }
-    @media(max-width:480px){ .gww-grid{grid-template-columns:1fr} }
-
-    /* ── FAQ ───────────────────────────────────────────────────── */
-    .faq-sec { background: var(--bg-alt); padding: 84px var(--ph); }
-    .faq-inner { max-width: var(--max); margin: 0 auto; }
-    .faq-list { margin-top: 44px; border-top: 1px solid var(--border); }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-q { width: 100%; padding: 21px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--sans); }
-    .faq-q-text { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--forest); line-height: 1.32; }
-    .faq-arrow { color: var(--stone); font-size: .9rem; flex-shrink: 0; transition: transform .28s; }
-    .faq-item.open .faq-arrow { transform: rotate(180deg); }
-    .faq-a { display: none; padding: 0 0 22px; }
-    .faq-item.open .faq-a { display: block; }
-    .faq-a p { font-size: .89rem; color: var(--muted); line-height: 1.82; max-width: 780px; }
-
-    /* ── SEO / KEYWORD BLOCK ───────────────────────────────────── */
-    .seo-block { background: var(--white); padding: 84px var(--ph); }
-    .seo-block-inner { max-width: var(--max); margin: 0 auto; }
-    .seo-block-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; margin-top: 38px; }
-    .seo-col h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: var(--forest); margin-bottom: 12px; }
-    .seo-col p { font-size: .87rem; color: var(--muted); line-height: 1.85; margin-bottom: 10px; }
-    .kw-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-    .kw-tag { font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--forest); background: var(--bg); border: 1px solid var(--border); padding: 6px 13px; }
-    @media(max-width:700px){ .seo-block-grid{grid-template-columns:1fr;gap:34px} }
-
-    /* ── FINAL CTA ─────────────────────────────────────────────── */
-    .final-cta { background: var(--forest); padding: 84px var(--ph); text-align: center; }
-    .final-cta-inner { max-width: 680px; margin: 0 auto; }
-    .final-cta .label { color: var(--stone-lt); }
-    .final-cta h2 { font-family: var(--serif); font-size: clamp(1.9rem,3.4vw,2.9rem); font-weight: 300; color: var(--white); line-height: 1.16; margin-bottom: 16px; }
-    .final-cta h2 em { font-style: italic; color: rgba(255,255,255,.8); }
-    .final-cta p { font-size: .92rem; color: rgba(255,255,255,.66); margin-bottom: 32px; line-height: 1.75; }
-    .final-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    @media(max-width:480px){ .final-cta-btns{flex-direction:column} .final-cta-btns a{justify-content:center} }
+    /* ── STICKY MOBILE CTA ─────────────────────────────────────── */
+    .sticky-cta {
+      display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 880;
+      padding: 10px var(--ph) calc(10px + env(safe-area-inset-bottom));
+      background: rgba(246,242,236,.97); backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border);
+      transform: translateY(110%); transition: transform .3s ease;
+    }
+    .sticky-cta.show { transform: none; }
+    .sticky-cta-inner { display: flex; align-items: center; gap: 14px; justify-content: space-between; }
+    .sticky-cta-price { font-size: .74rem; color: var(--muted); line-height: 1.3; }
+    .sticky-cta-price strong { display: block; font-family: var(--serif); font-size: 1.15rem; color: var(--dark); font-weight: 400; }
+    .sticky-cta a { padding: 13px 22px; font-size: .72rem; white-space: nowrap; }
+    @media(max-width:780px){ .sticky-cta { display: block; } body { padding-bottom: 0; } }
 
     /* ── FOOTER ────────────────────────────────────────────────── */
     .lp-footer { background: var(--dark); padding: 64px var(--ph) 32px; }
@@ -505,15 +549,16 @@
     .footer-bottom-links a:hover { color: var(--white); }
     @media(max-width:880px){ .footer-top{grid-template-columns:1fr 1fr;gap:34px} }
     @media(max-width:520px){ .footer-top{grid-template-columns:1fr} .footer-bottom{flex-direction:column;align-items:flex-start} }
+    @media(max-width:780px){ .lp-footer { padding-bottom: 92px; } }
 
     /* ── FADE ──────────────────────────────────────────────────── */
     .fade { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
     .fade.visible { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .fade { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+    @media (prefers-reduced-motion: reduce) { .fade { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } .sticky-cta { transition: none; } }
 
     /* ── PERFORMANCE ───────────────────────────────────────────── */
-    .rooms, .features, .lage, .dist, .mid-visual, .preise,
-    .vm-gallery, .gww, .seo-block, .faq-sec {
+    .rooms, .features, .lage, .dist, .band, .preise,
+    .vm-gallery, .infos, .seo-block, .faq-sec {
       content-visibility: auto; contain-intrinsic-size: auto 900px;
     }
 
@@ -522,12 +567,8 @@
       .hero { min-height: 100svh; height: 100svh; max-height: none; align-items: stretch; }
       .hero-content { height: 100%; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 100px; padding-bottom: 48px; }
       .hero-sub { margin-bottom: 0; }
-      .hero-btns { margin-top: auto; width: 100%; padding-top: 28px; }
-      .hero-btns .btn-ghost, .hero-btns .btn-hero { width: 100%; justify-content: center; }
-    }
-    @media(max-width:480px){
-      .hero-btns { flex-direction: column; }
-      .h-contact { display: none; }
+      .hero-btns { margin-top: auto; width: 100%; padding-top: 28px; flex-direction: column; }
+      .hero-btns a { width: 100%; }
     }
   </style>
 </head>
@@ -540,12 +581,9 @@
 <header class="lp-header" id="lp-header">
   <div class="lp-header-inner">
     <a class="h-logo" href="#top" aria-label="Val Mira – Ferienwohnung am Ritten">
-      <img src="../assets/valmira-logo-white.png" width="900" height="208" alt="Val Mira – Ferienwohnung am Ritten mit Infinity Pool, Südtirol" id="header-logo" />
+      <img src="../assets/valmira-logo-white.png" width="900" height="208" alt="Val Mira – Ferienwohnung am Ritten mit Infinity Pool, Südtirol" />
     </a>
-    <div class="h-right">
-      <a class="h-contact" href="mailto:info@val-mira.it">info@val-mira.it</a>
-      <a class="h-cta" href="#buchen">Verfügbarkeit prüfen</a>
-    </div>
+    <a class="h-cta" href="#direkt">Verfügbarkeit prüfen</a>
   </div>
 </header>
 
@@ -563,7 +601,7 @@
     <h1 class="hero-h1">Ferienwohnung am Ritten<br /><em>mit Infinity Pool.</em></h1>
     <p class="hero-sub">Zwei Türme auf einem Weingut über dem Eisacktal. 75 m² auf drei Ebenen, eigene Küche, gemeinsamer Infinity Pool. Ab 430 € pro Nacht und Turm.</p>
     <div class="hero-btns">
-      <a class="btn-hero" href="#direkt">Verfügbarkeit &amp; Preise prüfen</a>
+      <a class="btn-light" href="#direkt">Verfügbarkeit &amp; Preise prüfen</a>
       <a class="btn-ghost" href="#tuerme">Die Türme ansehen ↓</a>
     </div>
   </div>
@@ -595,31 +633,6 @@
   </div>
 </div>
 
-<!-- ── DIREKTBUCHUNG ───────────────────────────────────────────── -->
-<section class="direct" id="direkt">
-  <div class="direct-inner">
-    <div class="direct-head fade">
-      <div>
-        <span class="label">Direktbuchung</span>
-        <h2 class="section-h2">Verfügbarkeit prüfen und<br /><em>sofort online buchen.</em></h2>
-        <p class="section-desc">Wähle deine Reisedaten und buche deine Ferienwohnung am Ritten direkt beim Gastgeber – ohne Portal, ohne Zwischenprovision.</p>
-      </div>
-      <ul class="direct-benefits">
-        <li>Bestpreis direkt beim Gastgeber</li>
-        <li>Sofortige Bestätigung</li>
-        <li>Endreinigung &amp; Wäsche inklusive</li>
-        <li>Kostenlose Stornierung bis 60 Tage vorher</li>
-      </ul>
-    </div>
-
-    <!-- OOTB PMS Buchungswidget -->
-    <div id="ootb-booking" data-tenant="val-mira" data-color="#2E3829" data-lang="de"></div>
-    <script src="https://pms.outofthebox-media.com/booking.js" async></script>
-
-    <p class="direct-fallback">Lieber persönlich? <a href="#buchen">Unverbindliche Anfrage stellen</a> – wir melden uns innerhalb von 24 Stunden.</p>
-  </div>
-</section>
-
 <!-- ── INTRO ───────────────────────────────────────────────────── -->
 <section class="intro" id="tuerme">
   <div class="intro-inner fade">
@@ -632,10 +645,13 @@
       <p class="body-text">
         Entworfen hat die Türme der Architekt Andreas Gruber, gebaut wurden sie nach KlimaHaus-Gold-Standard. Wer eine Ferienwohnung am Ritten sucht, die eher Architektur als Hotelbetrieb ist, ist hier richtig.
       </p>
-      <a class="intro-cta" href="#direkt">Verfügbarkeit prüfen →</a>
+      <div class="cta-row" style="margin-top:28px;">
+        <a class="btn-solid" href="#direkt">Verfügbarkeit prüfen</a>
+        <a class="btn-outline" href="#preise">Preise ansehen</a>
+      </div>
     </div>
-    <img class="intro-img" src="../assets/intro-turm-900.webp" width="900" height="600"
-         alt="Design-Ferienwohnung Südtirol – freistehender Turm von Val Mira am Weinberg oberhalb des Eisacktals"
+    <img class="intro-img" src="../assets/intro-tuerme-pool-800.webp" width="800" height="1200"
+         alt="Val Mira von oben – zwei Ferienwohnungen mit Infinity Pool am Weinberg, Ritten Südtirol"
          loading="lazy" decoding="async" />
   </div>
 </section>
@@ -662,7 +678,7 @@
     </div>
     <div class="rooms-grid">
       <div class="room-card fade">
-        <img class="room-img" src="../assets/turm-i-1000.webp" width="1000" height="666"
+        <img class="room-img" src="../assets/turm-i-900.webp" width="900" height="1200"
              alt="Turm I – Ferienwohnung mit Pool am Ritten, direkter Poolzugang und Terrasse, Val Mira Südtirol"
              loading="lazy" decoding="async" />
         <div class="room-body">
@@ -677,11 +693,11 @@
             <span class="room-tag">Messingküche</span>
             <span class="room-tag">Blick Eisacktal</span>
           </div>
-          <a class="btn-room" href="#direkt">Turm I buchen →</a>
+          <a class="link-cta" href="#direkt">Turm I buchen →</a>
         </div>
       </div>
       <div class="room-card fade">
-        <img class="room-img" src="../assets/turm-ii-1000.webp" width="1000" height="666"
+        <img class="room-img" src="../assets/turm-ii-900.webp" width="900" height="1200"
              alt="Turm II – Ferienwohnung Ritten hofseitig mit Schlernblick, Val Mira auf dem Weingut"
              loading="lazy" decoding="async" />
         <div class="room-body">
@@ -696,22 +712,28 @@
             <span class="room-tag">Freistehende Badewanne</span>
             <span class="room-tag">Poolzugang</span>
           </div>
-          <a class="btn-room" href="#direkt">Turm II buchen →</a>
+          <a class="link-cta" href="#direkt">Turm II buchen →</a>
         </div>
       </div>
+    </div>
+    <div class="cta-row fade">
+      <a class="btn-solid" href="#direkt">Beide Türme vergleichen &amp; buchen</a>
     </div>
   </div>
 </section>
 
-<!-- ── QUOTE ───────────────────────────────────────────────────── -->
+<!-- ── QUOTE BAND ──────────────────────────────────────────────── -->
 <section class="quote-sec">
-  <img class="quote-img" src="../assets/quote-schlern-1600.webp" width="1600" height="1066"
-       alt="Blick aus der Ferienwohnung am Ritten auf den Schlern im Abendlicht – Val Mira Südtirol"
+  <img class="quote-img" src="../assets/band-landschaft-1600.webp" width="1500" height="1000"
+       alt="Val Mira am Hang über dem Eisacktal – Ferienwohnungen am Ritten in Südtirol, Blick auf die Berge"
        loading="lazy" decoding="async" />
   <div class="quote-overlay"></div>
   <div class="quote-inner">
     <blockquote>Manchmal ist der wichtigste Raum der Blick.</blockquote>
     <p>Die Türme sind kompakt im Grundriss, aber großzügig in dem, was sie freigeben: Himmel, Berge, Wetter, Licht. Morgens das Tal im Dunst. Abends der Schlern in der blauen Stunde.</p>
+    <div class="cta-row">
+      <a class="btn-light" href="#direkt">Jetzt Verfügbarkeit prüfen</a>
+    </div>
   </div>
 </section>
 
@@ -809,6 +831,10 @@
         <span class="preis-note-sub">Die Gemeindeaufenthaltsabgabe wird separat berechnet.</span>
       </div>
     </div>
+    <div class="cta-row fade">
+      <a class="btn-solid" href="#direkt">Termin wählen &amp; Preis berechnen</a>
+      <a class="btn-outline" href="#buchen">Unverbindlich anfragen</a>
+    </div>
   </div>
 </section>
 
@@ -825,7 +851,7 @@
         Val Mira liegt in Lengstein auf der Eisacktaler Seite des Ritten, zwischen Bozen und Brixen, auf rund 1.000 Metern. Der Blick geht nicht in die Stadt, sondern ins Tal: Reben, Wald, Hänge, Himmel – und von Turm II bis zum Schlern.
       </p>
       <p class="body-text">
-        Der Hof liegt ruhig und trotzdem zentral. Die Dolomiten, UNESCO-Welterbe, sind fast vor der Tür: Seiser Alm, Gröden mit der Seceda, Villnöss mit den Geislerspitzen und die Plose über Brixen erreicht man in unter einer Stunde. Wer ohne Auto anreist, kann nach Absprache einen privaten Shuttle nutzen.
+        Der Hof liegt ruhig und trotzdem zentral. Die Dolomiten, UNESCO-Welterbe, sind fast vor der Tür: Seiser Alm, Gröden mit der Seceda, Villnöss mit den Geislerspitzen und die Plose über Brixen erreicht man in unter einer Stunde.
       </p>
       <div class="loc-tags">
         <span class="loc-tag">Ritten · Renon</span>
@@ -834,6 +860,9 @@
         <span class="loc-tag">Bozen ca. 40 Min.</span>
         <span class="loc-tag">Brixen ca. 35 Min.</span>
         <span class="loc-tag">Seiser Alm ca. 35 Min.</span>
+      </div>
+      <div class="cta-row" style="margin-top:30px;">
+        <a class="btn-solid" href="#direkt">Verfügbarkeit prüfen</a>
       </div>
     </div>
   </div>
@@ -892,10 +921,10 @@
   </div>
 </section>
 
-<!-- ── MID VISUAL ──────────────────────────────────────────────── -->
-<section class="mid-visual">
-  <img src="../assets/pool-weitwinkel-1600.webp" width="1600" height="1067"
-       alt="Infinity Pool der Ferienwohnung am Ritten – Val Mira mit Blick über das Eisacktal, Südtirol"
+<!-- ── BAND: POOL ──────────────────────────────────────────────── -->
+<section class="band">
+  <img src="../assets/band-pool-spiegel-1600.webp" width="1600" height="1067"
+       alt="Infinity Pool von Val Mira mit Spiegelung der Dolomiten – Ferienwohnung mit Pool in Südtirol"
        loading="lazy" decoding="async" />
 </section>
 
@@ -907,42 +936,402 @@
         <span class="label">Einblicke</span>
         <h2 class="section-h2">Val Mira<br /><em>in Bildern.</em></h2>
       </div>
-      <p class="vm-gallery-note">Pool, Türme, Innenräume und das Leben rund um den Hof – fotografiert nach der Eröffnung. Am Desktop als Galerie, am Smartphone horizontal wischbar.</p>
+      <p class="vm-gallery-note">Pool, Türme, Innenräume und das Leben rund um den Hof – fotografiert von Fynn Seippel und Gustav Willeit.</p>
     </div>
+    <p class="gallery-hint">← Wischen für mehr Bilder</p>
     <div class="vm-gallery-track fade" aria-label="Val Mira – Ferienwohnung Ritten Südtirol, Bildergalerie">
       <figure class="vm-g-item vm-g-large">
+        <img src="../assets/g-wohnen-kueche-1100.webp" width="1100" height="734" alt="Wohnbereich mit Messingküche und freischwebender Treppe – Design-Ferienwohnung Ritten Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Wohnen &amp; Kochen</figcaption>
+      </figure>
+      <figure class="vm-g-item">
         <img src="../assets/g-bad-pool-900.webp" width="900" height="600" alt="Freistehende Badewanne mit Blick auf den Infinity Pool – Luxus Ferienwohnung Südtirol, Val Mira Ritten" loading="lazy" decoding="async" fetchpriority="low" />
-        <figcaption class="vm-g-caption">Baden mit Blick · Turm I</figcaption>
+        <figcaption class="vm-g-caption">Baden mit Blick</figcaption>
       </figure>
       <figure class="vm-g-item">
-        <img src="../assets/g-kueche-900.webp" width="900" height="600" alt="Messingküche in der Ferienwohnung am Ritten – Val Mira Design Ferienwohnung Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
-        <figcaption class="vm-g-caption">Eigene Küche</figcaption>
+        <img src="../assets/g-messingkueche-900.webp" width="900" height="600" alt="Messingküche in der Ferienwohnung am Ritten – Val Mira Design Ferienwohnung Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Messingküche</figcaption>
+      </figure>
+      <figure class="vm-g-item vm-g-tall">
+        <img src="../assets/g-fensterplatz-800.webp" width="800" height="1200" alt="Fensterplatz mit Sessel und Blick ins Grüne – Ferienwohnung Ritten Südtirol, Val Mira" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Platz am Fenster</figcaption>
       </figure>
       <figure class="vm-g-item">
-        <img src="../assets/g-wohnen-900.webp" width="900" height="600" alt="Wohnbereich mit freischwebender Treppe – Ferienwohnung Ritten Südtirol, Val Mira" loading="lazy" decoding="async" fetchpriority="low" />
-        <figcaption class="vm-g-caption">Wohnen &amp; Treppe</figcaption>
-      </figure>
-      <figure class="vm-g-item vm-g-tall">
-        <img src="../assets/g-dusche-900.webp" width="900" height="600" alt="Regendusche in der Design-Ferienwohnung Val Mira am Ritten, Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
-        <figcaption class="vm-g-caption">Bad · Turm II</figcaption>
-      </figure>
-      <figure class="vm-g-item vm-g-tall">
-        <img src="../assets/g-schlafen-900.webp" width="900" height="600" alt="Schlafzimmer mit Bergblick in der Ferienwohnung am Ritten – Val Mira Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
-        <figcaption class="vm-g-caption">Schlafen ganz oben</figcaption>
-      </figure>
-      <figure class="vm-g-item vm-g-wide">
-        <img src="../assets/g-wein-900.webp" width="900" height="600" alt="Wein vom eigenen Weingut – Urlaub auf dem Weingut in Südtirol, Val Mira am Ritten" loading="lazy" decoding="async" fetchpriority="low" />
-        <figcaption class="vm-g-caption">Wein vom Hof</figcaption>
+        <img src="../assets/g-essplatz-900.webp" width="900" height="600" alt="Essplatz unter der Treppe – Design-Ferienwohnung Südtirol, Val Mira am Ritten" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Essplatz</figcaption>
       </figure>
       <figure class="vm-g-item vm-g-wide">
         <img src="../assets/g-pool-sprung-900.webp" width="900" height="600" alt="Sprung in den Infinity Pool – Ferienwohnung mit Pool in Südtirol, Val Mira Ritten" loading="lazy" decoding="async" fetchpriority="low" />
         <figcaption class="vm-g-caption">Infinity Pool · nur für Gäste</figcaption>
       </figure>
+      <figure class="vm-g-item">
+        <img src="../assets/g-treppe-900.webp" width="900" height="600" alt="Freischwebende Treppe aus Beton – Architektur von Andreas Gruber, Val Mira Ritten" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Freischwebende Treppe</figcaption>
+      </figure>
+      <figure class="vm-g-item">
+        <img src="../assets/g-badewanne-900.webp" width="900" height="600" alt="Freistehende Badewanne vor dem Panoramafenster – Luxus Ferienwohnung Ritten Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Badewanne mit Aussicht</figcaption>
+      </figure>
       <figure class="vm-g-item vm-g-wide">
-        <img src="../assets/g-fenster-900.webp" width="900" height="600" alt="Offenes Eckfenster mit Blick in die Dolomiten – Ferienwohnung Ritten Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
-        <figcaption class="vm-g-caption">Blick in die Dolomiten</figcaption>
+        <img src="../assets/g-pool-drohne-1000.webp" width="1000" height="667" alt="Infinity Pool von oben im Weinberg – Ferienwohnung mit Infinity Pool Südtirol, Val Mira" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Pool im Weinberg</figcaption>
+      </figure>
+      <figure class="vm-g-item">
+        <img src="../assets/g-kueche-900.webp" width="900" height="600" alt="Küche mit Esstisch in der Ferienwohnung Ritten – Val Mira Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Eigene Küche</figcaption>
+      </figure>
+      <figure class="vm-g-item">
+        <img src="../assets/g-schlafzimmer-900.webp" width="900" height="600" alt="Schlafzimmer mit Dolomitenblick – Ferienwohnung am Ritten, Val Mira Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Schlafen ganz oben</figcaption>
+      </figure>
+      <figure class="vm-g-item vm-g-wide">
+        <img src="../assets/g-turm-pool-900.webp" width="900" height="600" alt="Turm mit Pool und Bergblick – Ferienwohnung mit Pool Ritten, Val Mira Weingut Südtirol" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Turm &amp; Pool</figcaption>
+      </figure>
+      <figure class="vm-g-item">
+        <img src="../assets/g-wein-900.webp" width="900" height="600" alt="Wein vom eigenen Weingut – Urlaub auf dem Weingut in Südtirol, Val Mira am Ritten" loading="lazy" decoding="async" fetchpriority="low" />
+        <figcaption class="vm-g-caption">Wein vom Hof</figcaption>
       </figure>
     </div>
+    <div class="cta-row fade">
+      <a class="btn-solid" href="#direkt">Jetzt Termin sichern</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── INFO-ACCORDIONS ─────────────────────────────────────────── -->
+<section class="infos" id="infos">
+  <div class="infos-inner">
+    <div>
+      <div class="section-head fade" style="margin-bottom:0;">
+        <span class="label">Alles Wichtige</span>
+        <h2 class="section-h2">Gut vorbereitet<br /><em>anreisen.</em></h2>
+        <p class="section-desc">Was im Preis steckt, was du vor Ort erwarten kannst, wie du herkommst – und was die Gästekarte der Region kann.</p>
+      </div>
+
+      <div class="acc-list fade">
+
+        <!-- 01 INKLUSIVLEISTUNGEN -->
+        <div class="acc-item">
+          <button class="acc-q" type="button" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-q-text">Inklusivleistungen</span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-a">
+            <span class="inc-sub">Im Preis enthalten</span>
+            <ul class="inc-list">
+              <li>Endreinigung</li>
+              <li>Handtücher &amp; Bettwäsche</li>
+              <li>Pooltücher &amp; Bademäntel</li>
+              <li>Zwischenreinigung ab 7 Nächten</li>
+              <li>Infinity Pool (Salzwasser)</li>
+              <li>WLAN in beiden Türmen</li>
+              <li>Klimaanlage — kühlt und heizt</li>
+              <li>Parkplatz direkt am Hof</li>
+              <li>Voll ausgestattete eigene Küche</li>
+              <li>Pflegeprodukte einer Meraner Manufaktur</li>
+            </ul>
+            <span class="inc-sub">Nicht enthalten</span>
+            <ul class="inc-list excl">
+              <li>Ortstaxe (Gemeindeaufenthaltsabgabe)</li>
+              <li>Frühstückskorb vom Hof — auf Wunsch</li>
+              <li>Wäscheservice — auf Wunsch, gegen Aufpreis</li>
+              <li>Hofprodukte wie Wein, Eier, Marmelade</li>
+            </ul>
+            <p>Der Preis gilt pro Turm und Nacht, unabhängig von der Personenzahl — bis zu vier Gäste kosten dasselbe wie zwei.</p>
+          </div>
+        </div>
+
+        <!-- 02 GUT ZU WISSEN -->
+        <div class="acc-item">
+          <button class="acc-q" type="button" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-q-text">Gut zu wissen</span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-a">
+            <div class="fact-grid">
+              <div>
+                <span class="fact-key">Belegung</span>
+                <span class="fact-val">Bis 4 Personen pro Turm</span>
+                <span class="fact-note">Gäste ab 14 Jahren, kein Babybett. Ideal für zwei, zusätzliche Schlafmöglichkeit im Wohnbereich.</span>
+              </div>
+              <div>
+                <span class="fact-key">Mindestaufenthalt</span>
+                <span class="fact-val">3 Nächte</span>
+                <span class="fact-note">Ganzjährig, in allen Saisonzeiträumen.</span>
+              </div>
+              <div>
+                <span class="fact-key">Check-in / Check-out</span>
+                <span class="fact-val">Ab 16 Uhr / bis 11 Uhr</span>
+                <span class="fact-note">Late Check-out nach Verfügbarkeit.</span>
+              </div>
+              <div>
+                <span class="fact-key">Verpflegung</span>
+                <span class="fact-val">Eigene Küche</span>
+                <span class="fact-note">Kein Frühstücksservice. Auf Wunsch stellen Sophia und Stefan einen Frühstückskorb vom Hof zusammen.</span>
+              </div>
+              <div>
+                <span class="fact-key">Haustiere</span>
+                <span class="fact-val">Nicht erlaubt</span>
+                <span class="fact-note">Auch keine Kleintiere.</span>
+              </div>
+              <div>
+                <span class="fact-key">Hausregeln</span>
+                <span class="fact-val">Ruhig &amp; rauchfrei</span>
+                <span class="fact-note">Keine Feiern, Rauchen nur im Außenbereich.</span>
+              </div>
+              <div>
+                <span class="fact-key">Barrierefreiheit</span>
+                <span class="fact-val">Nicht barrierefrei</span>
+                <span class="fact-note">Die Türme verteilen sich über drei Ebenen mit offenen, teils freischwebenden Treppen.</span>
+              </div>
+              <div>
+                <span class="fact-key">Zahlung</span>
+                <span class="fact-val">100 % bei Buchung</span>
+                <span class="fact-note">Der Gesamtbetrag ist bei Buchung sofort fällig.</span>
+              </div>
+              <div>
+                <span class="fact-key">Stornierung</span>
+                <span class="fact-val">Gestaffelt</span>
+                <span class="fact-note">Bis 60 Tage vorher: 100 % Rückerstattung · 30–60 Tage: 50 % · unter 30 Tage: keine Rückerstattung.</span>
+              </div>
+              <div>
+                <span class="fact-key">Umbuchung</span>
+                <span class="fact-val">Einmalig kostenlos</span>
+                <span class="fact-note">Bis 30 Tage vor Anreise, vorbehaltlich Verfügbarkeit.</span>
+              </div>
+            </div>
+            <p style="margin-top:18px;">Alle Bedingungen im Detail stehen in den <a href="https://www.val-mira.it/de/agb.html" target="_blank" rel="noopener">AGB</a>.</p>
+          </div>
+        </div>
+
+        <!-- 03 ANREISE -->
+        <div class="acc-item">
+          <button class="acc-q" type="button" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-q-text">Anreise &amp; Parken</span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-a">
+            <div class="fact-grid">
+              <div>
+                <span class="fact-key">Adresse</span>
+                <span class="fact-val">Rotwand 26 · Lengstein</span>
+                <span class="fact-note">39054 Ritten (BZ), Südtirol · Italien</span>
+              </div>
+              <div>
+                <span class="fact-key">Parken</span>
+                <span class="fact-val">Kostenlos am Hof</span>
+                <span class="fact-note">Direkt bei den Türmen, keine Reservierung nötig.</span>
+              </div>
+              <div>
+                <span class="fact-key">Mit dem Auto</span>
+                <span class="fact-val">Über die A22</span>
+                <span class="fact-note">Brennerautobahn bis Bozen, dann hinauf auf den Ritten Richtung Lengstein.</span>
+              </div>
+              <div>
+                <span class="fact-key">Ohne Auto</span>
+                <span class="fact-val">Bus bis Saubach</span>
+                <span class="fact-note">Von der Haltestelle sind es ca. 1,7 km bergauf. Ein privater Shuttle lässt sich nach Absprache organisieren.</span>
+              </div>
+            </div>
+            <p style="margin-top:18px;">
+              <a href="https://maps.google.com/?q=Rotwand+26,+39054+Ritten+BZ,+Italien" target="_blank" rel="noopener">Route in Google Maps öffnen →</a>
+            </p>
+            <p>Wenn du mit dem Zug anreist oder nicht jeden Weg selbst fahren möchtest, schreib es einfach in die Anfrage — wir klären den Transfer vorab.</p>
+          </div>
+        </div>
+
+        <!-- 04 RITTENCARD
+             HINWEIS FÜR OOTB: Die RittenCard wird ausschließlich von teilnehmenden
+             Beherbergungsbetrieben ausgegeben. Vor dem Livegang bei Sophia & Stefan
+             bestätigen lassen, ob Val Mira teilnimmt. Wenn ja, kann der letzte Absatz
+             durch eine klare Zusage ersetzt werden. -->
+        <div class="acc-item">
+          <button class="acc-q" type="button" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-q-text">RittenCard — die Gästekarte</span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-a">
+            <p>Die RittenCard ist die Gästekarte der Ferienregion Ritten. Sie wird von den teilnehmenden Beherbergungsbetrieben ausgegeben und gilt für die Dauer des Aufenthalts.</p>
+            <span class="inc-sub">Was die Karte kann</span>
+            <ul class="inc-list">
+              <li>Öffentlicher Nahverkehr in ganz Südtirol</li>
+              <li>Rittner Seilbahn von Bozen nach Oberbozen</li>
+              <li>Rittner Schmalspurbahn über das Hochplateau</li>
+              <li>Regionalbusse und Regionalzüge</li>
+              <li>Ermäßigungen bei Bergbahnen und Museen</li>
+              <li>Geführte Wanderungen und Ortsführungen</li>
+            </ul>
+            <p>Gerade wenn du ohne Auto unterwegs sein willst, ist das der bequemste Weg: Mit der Karte kommst du vom Ritten nach Bozen, Klausen oder Brixen, ohne einmal zu parken.</p>
+            <p>Ob die RittenCard für deinen Aufenthalt bereitliegt, bestätigen wir dir mit der Buchung. Frag im Zweifel einfach in der Anfrage nach.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cta-row fade">
+        <a class="btn-solid" href="#direkt">Verfügbarkeit prüfen</a>
+        <a class="btn-outline" href="#buchen">Frage stellen</a>
+      </div>
+    </div>
+
+    <aside class="infos-aside fade">
+      <img src="../assets/g-turm-pool-900.webp" width="900" height="600"
+           alt="Turm von Val Mira mit Infinity Pool im Weinberg – Ferienwohnung am Ritten, Südtirol"
+           loading="lazy" decoding="async" />
+      <p>Val Mira, Rotwand 26 in Lengstein am Ritten. Zwei Türme, ein Weingut, ein Infinity Pool — und sonst nichts.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────────────── -->
+<section class="faq-sec" id="faq">
+  <div class="faq-inner">
+    <div class="section-head fade">
+      <span class="label">Häufige Fragen</span>
+      <h2 class="section-h2">Fragen zur Ferienwohnung<br /><em>am Ritten.</em></h2>
+    </div>
+    <div class="faq-list fade">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" type="button">
+          <span class="faq-q-text">Wo genau liegt die Ferienwohnung am Ritten?</span>
+          <span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">
+          <p>Val Mira liegt in <strong>Lengstein am Ritten</strong> (Rotwand 26, 39054 Ritten / Renon, BZ), auf der Eisacktaler Seite zwischen Bozen und Brixen, auf rund 1.000 Metern. Die Lage ist ruhig, abseits der Hauptstraße – aber gut erreichbar: Klausen in ca. 20 Minuten, Brixen und die Seiser Alm in ca. 35 Minuten, Bozen und Gröden in ca. 40 Minuten.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" type="button">
+          <span class="faq-q-text">Was kostet eine Nacht in der Ferienwohnung Ritten?</span>
+          <span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">
+          <p>Der Preis liegt je nach Saison bei <strong>430 € bis 480 € pro Turm und Nacht</strong> – unabhängig von der Personenzahl, für bis zu vier Gäste. Der Mindestaufenthalt beträgt ganzjährig 3 Nächte. Endreinigung, Handtücher, Bettwäsche, Pooltücher und WLAN sind inklusive; die Ortstaxe wird zusätzlich berechnet. Die genauen Zeiträume stehen in der <a href="#preise">Preisübersicht</a>.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" type="button">
+          <span class="faq-q-text">Hat die Ferienwohnung einen eigenen Pool?</span>
+          <span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">
+          <p>Val Mira ist eine <strong>Ferienwohnung mit Infinity Pool in Südtirol</strong>: Der Pool liegt zwischen den beiden Türmen am Weinberg und wird ausschließlich von den Gästen der beiden Ferienwohnungen genutzt – also maximal acht Personen. Turm I hat direkten Zugang, von Turm II sind es wenige Schritte. Gepflegt wird der Pool über Salzelektrolyse statt mit klassischen Chlortabletten.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" type="button">
+          <span class="faq-q-text">Ist Val Mira ein Hotel oder eine Ferienwohnung?</span>
+          <span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">
+          <p>Val Mira ist eine <strong>Ferienwohnung auf einem Weingut</strong> – offiziell Urlaub auf dem Bauernhof, kein Hotel. Jeder Turm hat eine eigene Küche, es gibt keine Rezeption und keinen Frühstücksservice. Auf Wunsch stellen Sophia und Stefan einen Frühstückskorb vom Hof zusammen. Wer ein klassisches Wellnesshotel mit Halbpension sucht, ist hier falsch; wer Architektur, Aussicht und Ruhe sucht, richtig.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" type="button">
+          <span class="faq-q-text">Was bedeutet „Urlaub auf dem Weingut" bei Val Mira?</span>
+          <span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">
+          <p>Sophia und Stefan bewirtschaften den Hof am Ritten und bauen auf den Hängen rundherum <strong>Sauvignon, Riesling und Gewürztraminer</strong> an. Die Türme stehen mitten in diesen Reben. Wein, Eier und hausgemachte Marmelade gibt es je nach Saison direkt am Hof. <strong>Urlaub auf dem Weingut in Südtirol</strong> heißt hier nicht Themenprogramm, sondern schlicht: Der Betrieb rundherum ist echt.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" type="button">
+          <span class="faq-q-text">Ist Val Mira für Familien mit Kindern geeignet?</span>
+          <span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">
+          <p>Val Mira ist für <strong>Gäste ab 14 Jahren</strong> ausgelegt. Die Türme verteilen sich über drei Ebenen mit offenen, teils freischwebenden Treppen, direkt daneben liegt der Pool – für kleine Kinder ist das nicht der richtige Ort. Ein Babybett gibt es nicht. Für Paare, Alleinreisende, Freunde und Familien mit Jugendlichen ist Val Mira dagegen ideal.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" type="button">
+          <span class="faq-q-text">Wie buche ich – und kann ich stornieren?</span>
+          <span class="faq-arrow">↓</span>
+        </button>
+        <div class="faq-a">
+          <p>Am schnellsten geht es über das <a href="#direkt">Buchungsfenster unten auf dieser Seite</a>: Daten wählen, Verfügbarkeit sehen, direkt buchen. Wenn du Fragen hast oder flexibel bist, nutze das <a href="#buchen">Anfrageformular</a> – wir melden uns innerhalb von 24 Stunden. Storniert werden kann bis 60 Tage vor Anreise kostenlos, zwischen 30 und 60 Tagen werden 50 % berechnet, unter 30 Tagen gibt es keine Rückerstattung. Eine Umbuchung ist bis 30 Tage vor Anreise einmalig kostenlos möglich.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SEO / RELEVANZ ──────────────────────────────────────────── -->
+<section class="seo-block">
+  <div class="seo-block-inner">
+    <div class="section-head fade">
+      <span class="label">Val Mira im Überblick</span>
+      <h2 class="section-h2">Ferienwohnung Ritten Südtirol —<br /><em>was diesen Ort ausmacht.</em></h2>
+    </div>
+    <div class="seo-block-grid fade">
+      <div class="seo-col">
+        <h3>Ferienwohnung am Ritten mit Pool</h3>
+        <p>Wer eine <strong>Ferienwohnung am Ritten</strong> sucht, findet meist klassische Apartments in Klobenstein oder Oberbozen. Val Mira ist etwas anderes: zwei freistehende Türme auf einem Weingut in Lengstein, jeweils 75 m² auf drei Ebenen, mit eigener Küche, freistehender Badewanne und gemeinsamem Infinity Pool. Eine <strong>Ferienwohnung mit Pool in Südtirol</strong>, die sich nicht wie eine Anlage anfühlt, weil es außer den beiden Türmen nichts gibt.</p>
+        <p>Der Ritten (italienisch Renon) liegt auf einem Hochplateau über Bozen. Die Eisacktaler Seite, auf der Val Mira steht, ist die ruhigere: Reben, Wald, alte Wege – und diese klare Rittner Luft, wegen der Bozen früher schon zur Sommerfrische nach oben gefahren ist.</p>
+      </div>
+      <div class="seo-col">
+        <h3>Urlaub auf dem Weingut in Südtirol</h3>
+        <p>Val Mira ist offiziell <strong>Urlaub auf dem Bauernhof</strong> – genauer: <strong>Urlaub auf dem Weingut</strong>. Sophia und Stefan bauen Sauvignon, Riesling und Gewürztraminer direkt am Hof an. Wer in Südtirol auf einem Weingut übernachten möchte, ohne auf Design und Privatsphäre zu verzichten, findet hier beides.</p>
+        <p>Die Architektur stammt von Andreas Gruber, gebaut wurde nach <strong>KlimaHaus-Gold-Standard</strong> mit Wärmepumpe, Photovoltaik am Hof und schadstoffarmen Farben. Von hier aus sind Seiser Alm, Gröden, Villnöss, Brixen und Bozen in 20 bis 50 Minuten erreichbar – die <strong>Dolomiten</strong> also praktisch vor der Tür.</p>
+      </div>
+    </div>
+    <div class="kw-cloud fade">
+      <span class="kw-tag">Ferienwohnung Ritten</span>
+      <span class="kw-tag">Ferienwohnung Ritten Südtirol</span>
+      <span class="kw-tag">Ferienwohnung mit Pool Südtirol</span>
+      <span class="kw-tag">Ferienwohnung mit Infinity Pool</span>
+      <span class="kw-tag">Chalet Südtirol mit Pool</span>
+      <span class="kw-tag">Weingut Südtirol übernachten</span>
+      <span class="kw-tag">Urlaub auf dem Weingut Südtirol</span>
+      <span class="kw-tag">Urlaub auf dem Bauernhof Südtirol</span>
+      <span class="kw-tag">Ferienwohnung Lengstein</span>
+      <span class="kw-tag">Unterkunft Ritten</span>
+      <span class="kw-tag">Luxus Ferienwohnung Südtirol</span>
+      <span class="kw-tag">Design Ferienwohnung Südtirol</span>
+      <span class="kw-tag">Ferienwohnung Eisacktal</span>
+      <span class="kw-tag">Ferienwohnung Nähe Seiser Alm</span>
+      <span class="kw-tag">Ferienwohnung Nähe Brixen</span>
+      <span class="kw-tag">Apartment Renon</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     AB HIER NUR NOCH CONVERSION: WIDGET → FORMULAR → FOOTER.
+     Keine weiteren Inhaltssektionen darunter einfügen.
+     ══════════════════════════════════════════════════════════════ -->
+
+<!-- ── DIREKTBUCHUNG (WIDGET) ──────────────────────────────────── -->
+<section class="direct" id="direkt">
+  <div class="direct-inner">
+    <div class="direct-head fade">
+      <div>
+        <span class="label">Direktbuchung</span>
+        <h2 class="section-h2">Verfügbarkeit prüfen und<br /><em>sofort online buchen.</em></h2>
+        <p class="section-desc">Wähle deine Reisedaten und buche deine Ferienwohnung am Ritten direkt beim Gastgeber – ohne Portal, ohne Zwischenprovision.</p>
+      </div>
+      <ul class="direct-benefits">
+        <li>Bestpreis direkt beim Gastgeber</li>
+        <li>Sofortige Bestätigung</li>
+        <li>Endreinigung &amp; Wäsche inklusive</li>
+        <li>Kostenlose Stornierung bis 60 Tage vorher</li>
+      </ul>
+    </div>
+
+    <!-- OOTB PMS Buchungswidget -->
+    <div id="ootb-booking" data-tenant="val-mira" data-color="#2E3829" data-lang="de"></div>
+    <script src="https://pms.outofthebox-media.com/booking.js" async></script>
   </div>
 </section>
 
@@ -960,7 +1349,7 @@
       <div class="booking-head fade">
         <span class="label">Unverbindliche Anfrage</span>
         <h2 class="booking-h2">Lieber persönlich?<br /><em>Frag deinen Turm an.</em></h2>
-        <p class="booking-sub">Wenn du Fragen hast oder deine Daten flexibel sind: Schreib uns hier. Wir prüfen die Verfügbarkeit und melden uns innerhalb von 24 Stunden. Sofort buchen kannst du <a href="#direkt" style="border-bottom:1px solid var(--stone-lt)">oben im Buchungsfenster</a>.</p>
+        <p class="booking-sub">Wenn du Fragen hast oder deine Daten flexibel sind: Schreib uns hier. Wir prüfen die Verfügbarkeit und melden uns innerhalb von 24 Stunden. Sofort buchen kannst du <a href="#direkt">oben im Buchungsfenster</a>.</p>
       </div>
 
       <div class="booking-layout">
@@ -1089,214 +1478,6 @@
   </div>
 </section>
 
-<!-- ── GUT ZU WISSEN ───────────────────────────────────────────── -->
-<section class="gww">
-  <div class="gww-inner">
-    <div class="section-head fade">
-      <span class="label">Gut zu wissen</span>
-      <h2 class="section-h2">Alles Wichtige<br /><em>auf einen Blick.</em></h2>
-    </div>
-    <div class="gww-grid">
-      <div class="fade">
-        <span class="gww-key">Belegung</span>
-        <span class="gww-val">Bis 4 Personen pro Turm</span>
-        <span class="gww-note">Gäste ab 14 Jahren, kein Babybett. Ideal für zwei, zusätzliche Schlafmöglichkeit im Wohnbereich.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Mindestaufenthalt</span>
-        <span class="gww-val">3 Nächte</span>
-        <span class="gww-note">Ganzjährig, in allen Saisonzeiträumen.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Infinity Pool</span>
-        <span class="gww-val">Für beide Türme</span>
-        <span class="gww-note">In wenigen Schritten erreichbar, Salzwasser statt Chlortabletten.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Parken</span>
-        <span class="gww-val">Direkt am Hof</span>
-        <span class="gww-note">Kostenlos. Anreise ohne Auto: Bus bis Saubach, ca. 1,7 km bergauf, Shuttle auf Wunsch.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Check-in / Check-out</span>
-        <span class="gww-val">Ab 16 / bis 11 Uhr</span>
-        <span class="gww-note">Late Check-out nach Verfügbarkeit.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Verpflegung</span>
-        <span class="gww-val">Eigene Küche</span>
-        <span class="gww-note">Kein Frühstücksservice, auf Wunsch ein Frühstückskorb vom Hof.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Wäsche &amp; Reinigung</span>
-        <span class="gww-val">Inklusive</span>
-        <span class="gww-note">Handtücher, Bettwäsche, Pooltücher, Bademäntel. Endreinigung inklusive, Zwischenreinigung ab 7 Nächten.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Ausstattung</span>
-        <span class="gww-val">Klimaanlage &amp; WLAN</span>
-        <span class="gww-note">Klimaanlage kühlt und heizt den ganzen Turm, WLAN kostenlos in beiden Türmen.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Barrierefreiheit</span>
-        <span class="gww-val">Nicht barrierefrei</span>
-        <span class="gww-note">Die Türme verteilen sich über mehrere Ebenen mit Treppen.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Haustiere</span>
-        <span class="gww-val">Nicht erlaubt</span>
-        <span class="gww-note">Auch keine Kleintiere.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Hausregeln</span>
-        <span class="gww-val">Ruhig &amp; rauchfrei</span>
-        <span class="gww-note">Keine Feiern, Rauchen nur im Außenbereich.</span>
-      </div>
-      <div class="fade">
-        <span class="gww-key">Stornierung</span>
-        <span class="gww-val">Gestaffelt</span>
-        <span class="gww-note">Bis 60 Tage: 100 % · 30–60 Tage: 50 % · unter 30 Tage: keine Rückerstattung.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ ─────────────────────────────────────────────────────── -->
-<section class="faq-sec" id="faq">
-  <div class="faq-inner">
-    <div class="section-head fade">
-      <span class="label">Häufige Fragen</span>
-      <h2 class="section-h2">Fragen zur Ferienwohnung<br /><em>am Ritten.</em></h2>
-    </div>
-    <div class="faq-list fade">
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          <span class="faq-q-text">Wo genau liegt die Ferienwohnung am Ritten?</span>
-          <span class="faq-arrow">↓</span>
-        </button>
-        <div class="faq-a">
-          <p>Val Mira liegt in <strong>Lengstein am Ritten</strong> (Rotwand 26, 39054 Ritten / Renon, BZ), auf der Eisacktaler Seite zwischen Bozen und Brixen, auf rund 1.000 Metern. Die Lage ist ruhig und abseits der Hauptstraße: Klausen erreicht man in ca. 20 Minuten, Brixen und die Seiser Alm in ca. 35 Minuten, Bozen und Gröden in ca. 40 Minuten.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          <span class="faq-q-text">Was kostet eine Nacht in der Ferienwohnung Ritten?</span>
-          <span class="faq-arrow">↓</span>
-        </button>
-        <div class="faq-a">
-          <p>Der Preis liegt je nach Saison bei <strong>430 € bis 480 € pro Turm und Nacht</strong> – unabhängig von der Personenzahl, für bis zu vier Gäste. Der Mindestaufenthalt beträgt ganzjährig 3 Nächte. Endreinigung, Handtücher, Bettwäsche, Pooltücher und WLAN sind inklusive; die Ortstaxe wird zusätzlich berechnet. Die genauen Zeiträume stehen in der <a href="#preise" style="border-bottom:1px solid var(--stone-lt)">Preisübersicht</a>.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          <span class="faq-q-text">Hat die Ferienwohnung einen eigenen Pool?</span>
-          <span class="faq-arrow">↓</span>
-        </button>
-        <div class="faq-a">
-          <p>Val Mira ist eine <strong>Ferienwohnung mit Infinity Pool in Südtirol</strong>: Der Pool liegt zwischen den beiden Türmen am Weinberg und wird ausschließlich von den Gästen der beiden Ferienwohnungen genutzt – also maximal acht Personen. Turm I hat direkten Zugang, von Turm II sind es wenige Schritte. Gepflegt wird der Pool über Salzelektrolyse statt mit klassischen Chlortabletten.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          <span class="faq-q-text">Ist Val Mira ein Hotel oder eine Ferienwohnung?</span>
-          <span class="faq-arrow">↓</span>
-        </button>
-        <div class="faq-a">
-          <p>Val Mira ist eine <strong>Ferienwohnung auf einem Weingut</strong> – offiziell Urlaub auf dem Bauernhof, kein Hotel. Jeder Turm hat eine eigene Küche, es gibt keine Rezeption und keinen Frühstücksservice. Auf Wunsch stellen Sophia und Stefan einen Frühstückskorb vom Hof zusammen. Wer ein klassisches Wellnesshotel mit Halbpension sucht, ist hier falsch; wer Architektur, Aussicht und Ruhe sucht, richtig.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          <span class="faq-q-text">Was bedeutet „Urlaub auf dem Weingut" bei Val Mira?</span>
-          <span class="faq-arrow">↓</span>
-        </button>
-        <div class="faq-a">
-          <p>Sophia und Stefan bewirtschaften den Hof am Ritten und bauen auf den Hängen rundherum <strong>Sauvignon, Riesling und Gewürztraminer</strong> an. Die Türme stehen mitten in diesen Reben. Wein, Eier und hausgemachte Marmelade gibt es je nach Saison direkt am Hof. <strong>Urlaub auf dem Weingut in Südtirol</strong> heißt hier nicht Themenprogramm, sondern schlicht: Der Betrieb rundherum ist echt.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          <span class="faq-q-text">Ist Val Mira für Familien mit Kindern geeignet?</span>
-          <span class="faq-arrow">↓</span>
-        </button>
-        <div class="faq-a">
-          <p>Val Mira ist für <strong>Gäste ab 14 Jahren</strong> ausgelegt. Die Türme verteilen sich über drei Ebenen mit offenen, teils freischwebenden Treppen, direkt daneben liegt der Pool – für kleine Kinder ist das nicht der richtige Ort. Ein Babybett gibt es nicht. Für Paare, Alleinreisende, Freunde und Familien mit Jugendlichen ist Val Mira dagegen ideal.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" type="button">
-          <span class="faq-q-text">Wie buche ich – und kann ich stornieren?</span>
-          <span class="faq-arrow">↓</span>
-        </button>
-        <div class="faq-a">
-          <p>Am schnellsten geht es über das <a href="#direkt" style="border-bottom:1px solid var(--stone-lt)">Buchungsfenster oben auf dieser Seite</a>: Daten wählen, Verfügbarkeit sehen, direkt buchen. Wenn du Fragen hast oder flexibel bist, nutze das <a href="#buchen" style="border-bottom:1px solid var(--stone-lt)">Anfrageformular</a> – wir melden uns innerhalb von 24 Stunden. Storniert werden kann bis 60 Tage vor Anreise kostenlos, zwischen 30 und 60 Tagen werden 50 % berechnet, unter 30 Tagen gibt es keine Rückerstattung. Eine Umbuchung ist bis 30 Tage vor Anreise einmalig kostenlos möglich.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── SEO / RELEVANZ ──────────────────────────────────────────── -->
-<section class="seo-block">
-  <div class="seo-block-inner">
-    <div class="section-head fade">
-      <span class="label">Val Mira im Überblick</span>
-      <h2 class="section-h2">Ferienwohnung Ritten Südtirol —<br /><em>was diesen Ort ausmacht.</em></h2>
-    </div>
-    <div class="seo-block-grid fade">
-      <div class="seo-col">
-        <h3>Ferienwohnung am Ritten mit Pool</h3>
-        <p>Wer eine <strong>Ferienwohnung am Ritten</strong> sucht, findet meist klassische Apartments in Klobenstein oder Oberbozen. Val Mira ist etwas anderes: zwei freistehende Türme auf einem Weingut in Lengstein, jeweils 75 m² auf drei Ebenen, mit eigener Küche, freistehender Badewanne und gemeinsamem Infinity Pool. Eine <strong>Ferienwohnung mit Pool in Südtirol</strong>, die sich nicht wie eine Anlage anfühlt, weil es außer den beiden Türmen nichts gibt.</p>
-        <p>Der Ritten (italienisch Renon) liegt auf einem Hochplateau über Bozen. Die Eisacktaler Seite, auf der Val Mira steht, ist die ruhigere: Reben, Wald, alte Wege – und die klare Rittner Luft, wegen der Bozen früher schon zur Sommerfrische nach oben gefahren ist.</p>
-      </div>
-      <div class="seo-col">
-        <h3>Urlaub auf dem Weingut in Südtirol</h3>
-        <p>Val Mira ist offiziell <strong>Urlaub auf dem Bauernhof</strong> – genauer: <strong>Urlaub auf dem Weingut</strong>. Sophia und Stefan bauen Sauvignon, Riesling und Gewürztraminer direkt am Hof an. Wer in Südtirol auf einem Weingut übernachten möchte, ohne auf Design und Privatsphäre zu verzichten, findet hier beides.</p>
-        <p>Die Architektur stammt von Andreas Gruber, gebaut wurde nach <strong>KlimaHaus-Gold-Standard</strong> mit Wärmepumpe, Photovoltaik am Hof und schadstoffarmen Farben. Von hier aus sind Seiser Alm, Gröden, Villnöss, Brixen und Bozen in 20 bis 50 Minuten erreichbar – die <strong>Dolomiten</strong> also praktisch vor der Tür.</p>
-      </div>
-    </div>
-    <div class="kw-cloud fade">
-      <span class="kw-tag">Ferienwohnung Ritten</span>
-      <span class="kw-tag">Ferienwohnung Ritten Südtirol</span>
-      <span class="kw-tag">Ferienwohnung mit Pool Südtirol</span>
-      <span class="kw-tag">Ferienwohnung mit Infinity Pool</span>
-      <span class="kw-tag">Chalet Südtirol mit Pool</span>
-      <span class="kw-tag">Weingut Südtirol übernachten</span>
-      <span class="kw-tag">Urlaub auf dem Weingut Südtirol</span>
-      <span class="kw-tag">Urlaub auf dem Bauernhof Südtirol</span>
-      <span class="kw-tag">Ferienwohnung Lengstein</span>
-      <span class="kw-tag">Unterkunft Ritten</span>
-      <span class="kw-tag">Luxus Ferienwohnung Südtirol</span>
-      <span class="kw-tag">Design Ferienwohnung Südtirol</span>
-      <span class="kw-tag">Ferienwohnung Eisacktal</span>
-      <span class="kw-tag">Ferienwohnung Nähe Seiser Alm</span>
-      <span class="kw-tag">Ferienwohnung Nähe Brixen</span>
-      <span class="kw-tag">Apartment Renon</span>
-    </div>
-  </div>
-</section>
-
-<!-- ── FINAL CTA ───────────────────────────────────────────────── -->
-<section class="final-cta">
-  <div class="final-cta-inner fade">
-    <span class="label">Jetzt buchbar</span>
-    <h2>Am Ritten<br /><em>ankommen.</em></h2>
-    <p>Zwei Türme, ein Weingut, ein Infinity Pool und viel Ruhe über dem Eisacktal. Turm I, Turm II oder beide – direkt beim Gastgeber, ohne Portalgebühr.</p>
-    <div class="final-cta-btns">
-      <a class="btn-hero" href="#direkt">Verfügbarkeit prüfen</a>
-      <a class="btn-ghost" href="#buchen">Anfrage stellen</a>
-    </div>
-  </div>
-</section>
-
 <!-- ── FOOTER ──────────────────────────────────────────────────── -->
 <footer class="lp-footer">
   <div class="footer-inner">
@@ -1325,11 +1506,11 @@
       <div class="footer-col">
         <span class="footer-col-title">Auf dieser Seite</span>
         <ul>
-          <li><a href="#direkt">Verfügbarkeit &amp; Buchung</a></li>
           <li><a href="#tuerme">Die Türme</a></li>
           <li><a href="#preise">Preise</a></li>
           <li><a href="#lage">Lage &amp; Dolomiten</a></li>
-          <li><a href="#faq">Häufige Fragen</a></li>
+          <li><a href="#infos">Inklusivleistungen</a></li>
+          <li><a href="#direkt">Verfügbarkeit &amp; Buchung</a></li>
         </ul>
       </div>
     </div>
@@ -1346,12 +1527,29 @@
   </div>
 </footer>
 
+<!-- ── STICKY MOBILE CTA ───────────────────────────────────────── -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-price">ab <strong>430 €</strong> pro Turm &amp; Nacht</div>
+    <a class="btn-solid" href="#direkt">Verfügbarkeit prüfen</a>
+  </div>
+</div>
+
 <!-- ── SCRIPTS ─────────────────────────────────────────────────── -->
 <script>
 /* ── JAHR ─────────────────────────────────────────────────────── */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ── FAQ TOGGLE ───────────────────────────────────────────────── */
+/* ── ACCORDIONS / FAQ ─────────────────────────────────────────── */
+function toggleAcc(btn) {
+  var item = btn.parentElement;
+  var willOpen = !item.classList.contains('open');
+  item.parentElement.querySelectorAll('.acc-item.open').forEach(function(i) {
+    i.classList.remove('open');
+    i.querySelector('.acc-q').setAttribute('aria-expanded', 'false');
+  });
+  if (willOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+}
 function toggleFaq(btn) {
   var item = btn.parentElement;
   var isOpen = item.classList.contains('open');
@@ -1361,11 +1559,26 @@ function toggleFaq(btn) {
 
 /* ── HEADER SCROLL ────────────────────────────────────────────── */
 var header = document.getElementById('lp-header');
-function updateHeader() {
-  header.classList.toggle('solid', window.scrollY > 60);
-}
+function updateHeader() { header.classList.toggle('solid', window.scrollY > 60); }
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
+
+/* ── STICKY MOBILE CTA: ab Hero einblenden, im Buchungsbereich ausblenden ── */
+(function stickyCta() {
+  var bar = document.getElementById('sticky-cta');
+  var direkt = document.getElementById('direkt');
+  var inBooking = false;
+  if ('IntersectionObserver' in window && direkt) {
+    new IntersectionObserver(function(es) { inBooking = es[0].isIntersecting; update(); },
+      { rootMargin: '0px 0px -30% 0px' }).observe(direkt);
+  }
+  function update() {
+    var pastHero = window.scrollY > window.innerHeight * 0.75;
+    bar.classList.toggle('show', pastHero && !inBooking);
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
 
 /* ── FADE IN ON SCROLL ────────────────────────────────────────── */
 var faders = document.querySelectorAll('.fade');
@@ -1382,7 +1595,7 @@ if ('IntersectionObserver' in window) {
    ANFRAGEFORMULAR
    1. PMS   : POST https://pms.outofthebox-media.com/api/inquiry  (primär)
    2. Lead  : POST https://dashboard.outofthebox-media.com/api/lead (GuestFlow)
-   3. GTM   : dataLayer.push({ event: 'generate_lead', ... })
+   3. GTM   : dataLayer.push({ event: 'form_lead_success', ... })
    ════════════════════════════════════════════════════════════════ */
 
 var TENANT_SLUG = 'val-mira';
@@ -1442,8 +1655,8 @@ function calculateStayPricing(checkin, checkout) {
 var selectedTurm = 'turm1';
 var adults = 2, children = 0;
 var TURM_DATA = {
-  turm1: { name: 'Turm I',      desc: 'Poolseite · bis 4 Personen',            room: 'Turm I',           units: 1, max: 4 },
-  turm2: { name: 'Turm II',     desc: 'Hofseite · bis 4 Personen',             room: 'Turm II',          units: 1, max: 4 },
+  turm1: { name: 'Turm I',      desc: 'Poolseite · bis 4 Personen',             room: 'Turm I',           units: 1, max: 4 },
+  turm2: { name: 'Turm II',     desc: 'Hofseite · bis 4 Personen',              room: 'Turm II',          units: 1, max: 4 },
   beide: { name: 'Beide Türme', desc: 'Beide Ferienwohnungen · bis 8 Personen', room: 'Turm I & Turm II', units: 2, max: 8 }
 };
 
@@ -1676,7 +1889,7 @@ async function handleSubmit(ev) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ ecommerce: null });
   window.dataLayer.push({
-    event:        'generate_lead',
+    event:        'form_lead_success',
     lead_id:      gf.id || '',
     room_type:    payload.room_type,
     checkin:      ci,
