@@ -1,0 +1,22 @@
+# Val Mira — Google Ads Landingpage (urlaub.val-mira.it)
+# Diese Subdomain ist reine Ads-Zielseite und darf NICHT organisch indexiert
+# werden, damit sie nicht mit www.val-mira.it um dieselben Keywords konkurriert.
+
+# Reguläre Crawler: nicht crawlen, nicht indexieren.
+User-agent: *
+Disallow: /
+
+# AdsBot MUSS crawlen dürfen — sonst sinkt die Zielseitenerfahrung
+# im Quality Score bzw. Anzeigen werden abgelehnt.
+# AdsBot ignoriert "User-agent: *" und braucht eigene Regeln.
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: AdsBot-Google-Mobile-Apps
+Allow: /
+
+User-agent: Google-Safety
+Allow: /
