@@ -232,8 +232,10 @@
     .intro-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 76px; align-items: center; }
     .intro-h2 { font-family: var(--serif); font-size: clamp(1.85rem, 3.1vw, 2.9rem); font-weight: 300; line-height: 1.18; color: var(--forest); margin-bottom: 24px; }
     .intro-h2 em { font-style: italic; }
-    .intro-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
-    @media(max-width:880px){ .intro-inner{grid-template-columns:1fr;gap:40px} .intro-img{aspect-ratio:4/5} }
+    /* Hochformat: vollständig zeigen, aber in der Höhe begrenzen — sonst wird
+       die Sektion unnötig lang. Breite folgt dem Seitenverhältnis. */
+    .intro-img { display: block; margin: 0 auto; width: auto; max-width: 100%; height: auto; max-height: 560px; }
+    @media(max-width:880px){ .intro-inner{grid-template-columns:1fr;gap:40px} .intro-img{max-height:440px} }
 
     /* ── NUMBERS ───────────────────────────────────────────────── */
     .numbers { background: var(--bg-alt); padding: 58px var(--ph); }
@@ -249,6 +251,9 @@
     /* Türme exakt wie auf der Hauptwebsite: feste Bildhöhe 600 px, gap 80, Fokus bei 30 % */
     .rooms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
     .room-card .room-img { width: 100%; height: 600px; object-fit: cover; object-position: center 30%; }
+    /* Turm II steht in der rechten Bildhälfte — Ausschnitt dorthin verschieben,
+       sonst schneidet der mittige Zuschnitt genau ihn weg. */
+    .room-card .room-img.focus-right { object-position: 75% 30%; }
     .room-body { padding: 26px 0 0; }
     .room-h3 { font-family: var(--serif); font-size: 1.7rem; font-weight: 300; color: var(--dark); margin-bottom: 8px; }
     .room-text { font-size: .89rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
@@ -318,8 +323,12 @@
     @media(max-width:520px){ .dist-grid{grid-template-columns:1fr} }
 
     /* ── VOLLBILD-BAND ─────────────────────────────────────────── */
+    /* Desktop: fester Ausschnitt als Vollbild-Band.
+       Mobil: volle Höhe nach Seitenverhältnis, damit das ganze Bild sichtbar ist
+       (max-height ohne feste height hat den unteren Rand abgeschnitten). */
     .band { line-height: 0; background: var(--bg-alt); }
-    .band img { width: 100%; max-height: 66vh; object-fit: cover; object-position: center 50%; display: block; }
+    .band img { width: 100%; height: 58vh; max-height: 580px; object-fit: cover; object-position: center 50%; display: block; }
+    @media(max-width:880px){ .band img { height: auto; max-height: none; } }
 
     /* ── GALERIE ───────────────────────────────────────────────── */
     .vm-gallery { background: var(--white); padding: 96px var(--ph); }
@@ -707,7 +716,7 @@
         </div>
       </div>
       <div class="room-card fade">
-        <img class="room-img" src="../assets/turm-ii-1700.webp" width="1700" height="1134"
+        <img class="room-img focus-right" src="../assets/turm-ii-1700.webp" width="1700" height="1134"
              alt="Turm II – Ferienwohnung Ritten hofseitig mit Schlernblick, Val Mira auf dem Weingut"
              loading="lazy" decoding="async" />
         <div class="room-body">
